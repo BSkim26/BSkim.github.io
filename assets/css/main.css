@@ -1358,13 +1358,9 @@ input, select, textarea {
 
 				#header nav ul li a {
 					display: block;
-					min-width: 7.5rem;
 					height: 2.75rem;
-					line-height: 2.75rem;
-					padding: 0 0 0 0;
+					width: 100px;
 					text-transform: uppercase;
-					letter-spacing: 0.2rem;
-					font-size: 0.8rem;
 					border-bottom: 0;
 				}
 
