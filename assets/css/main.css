@@ -1359,7 +1359,7 @@ input, select, textarea {
 				#header nav ul li a {
 					display: block;
 					height: 2.75rem;
-					width: 100px;
+					width: 200px;
 					text-transform: uppercase;
 					border-bottom: 0;
 				}
