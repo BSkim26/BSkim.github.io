@@ -68,14 +68,11 @@
                 </div>
                 <div style="text-align: left;">
                   <label class="radio-inline" style="font-weight: normal !important">
-                    <input type="radio" id="optradio" class="optradio" name="optradio1" value="tansig" checked>tansig
+                    <input type="radio" id="optradio" class="optradio" name="optradio1" value="logsig">sigmoid
                   </label>&nbsp;&nbsp;
                   <label class="radio-inline" style="font-weight: normal !important">
-                    <input type="radio" id="optradio" class="optradio" name="optradio1" value="logsig">logsig
+                    <input type="radio" id="optradio" class="optradio" name="optradio1" value="tansig">tansig
                   </label>&nbsp;&nbsp;
-                  <label class="radio-inline" style="font-weight: normal !important">
-                    <input type="radio" id="optradio" class="optradio" name="optradio1" value="purelin">purelin
-                  </label>
                 </div>  
                 <br><br>
               </div> 
@@ -84,26 +81,8 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-lg-3">
-      <div class="form-group">
-        <label>Weights</label>
-        <div>         
-          <textarea id="weightsTextarea" style="width: 100%" rows="20"></textarea>
-        </div>
-      </div>
-    </div>  
+    </div> 
     <div class="col-lg-1">
-      <label><br></label><br>
-      <div style="margin-top:10px">
-        <button id="random" class="btn btn-warning btn-block" onclick="setWeight()">Weight</button>
-      </div>
-      <div style="padding-top: 20px">
-        <button id="graphic" class="btn btn-primary btn-block" onclick="createLines()">Graphic</button>
-      </div>
-      <div style="padding-top: 20px">
-       <button id="run" class="btn btn-succes btn-block"  onclick="inputOutputText()">Run</button>
-     </div>
      <div style="padding-top: 20px">
       <button id="reset" class="btn btn-danger btn-block" onclick="resetAll()">Reset</button>          
     </div>
