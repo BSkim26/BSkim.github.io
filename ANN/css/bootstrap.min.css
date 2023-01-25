@@ -348,6 +348,10 @@ h3 {
 }
 .h4,
 h4 {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-size: 1.5rem;
 }
 .h5,
@@ -524,6 +528,9 @@ pre code {
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
+    top : 50%;
+    transform:translate(0%, -50%);
+    position :absolute;
 }
 .row {
     display: -webkit-box;
@@ -3239,6 +3246,7 @@ tbody.collapse.show {
     -ms-flex-align: stretch;
     align-items: stretch;
     width: 100%;
+    
 }
 .input-group > .custom-file,
 .input-group > .custom-select,

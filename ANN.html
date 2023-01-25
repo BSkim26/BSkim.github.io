@@ -10,54 +10,7 @@
     <link rel="stylesheet" href="ANN/css/bootstrap.min.css">
     <link rel="stylesheet" href="ANN/css/font.css" >
     <noscript><link rel="stylesheet" href="ANN/css/ANN.css" /></noscript>
-
-    <style type="text/css">
-        * { font-weight: 100; }
-        h1 { font-weight: 100; }
-        #graph-container {
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            position: fixed;
-        }
-
-        .nn-picker {
-            width: 410px;
-            margin: 30px;
-            z-index: 1000;
-        }
-
-        [data-toggle="collapse"] .fa:before {
-            font-size: 2rem;
-            color: black;
-            content: "\f106";
-            position: relative;
-            top: 5px;
-        }
-        .fa {
-          transition: 0.3s transform ease-in-out;
-        }
-        .collapsed .fa {
-          transform: rotate(-180deg);
-        }
-        .tab-content {
-            padding: 20px;
-        }
-        input[type="range"] {
-            margin-left: 10px;
-        }
-        #count {
-            position: fixed;
-            bottom: 0;
-            right: 1rem;
-            opacity: 0.4;
-            font-weight: 100;
-        }
-        .text {
-            font-weight: 300;
-        }
-    </style>
+    <link rel="stylesheet" href="ANN/css/text.css">
 
     <title>ANN</title>
 
@@ -85,39 +38,49 @@
                             <div id="architecture">
 
                                 <div class="row entry">
-                                    <div class="input-group mb-2 mr-sm-2 col-4">
+                                    <span class="input-group mb-2 mr-sm-2 col-4">
                                         <button class="btn btn-secondary btn-remove input-group-prepend">-</button>
                                         <input type="number" class="form-control" name="numberOfNodes" step="1" value="10" min="1" max="20"/>
-                                    </div>
+                                    </span>
+                                    <div class="range">
                                     <input type="range" class="form-control col-4" name="betweenNodesInLayer" min="0" max="100" step="1" value="20" style="position: relative; top: -4px;">
+                                    </div>
+                                </div>
+                                <div class="row entry">
+                                    <span class="input-group mb-2 mr-sm-2 col-4">
+                                        <button class="btn btn-secondary btn-remove input-group-prepend">-</button>
+                                        <input type="number" class="form-control" name="numberOfNodes" step="1" value="10" min="1" max="20"/>
+                                    </span>
+                                    <div class="range">
+                                    <input type="range" class="form-control col-4" name="betweenNodesInLayer" min="0" max="100" step="1" value="20" style="position: relative; top: -4px;">
+                                    </div>
                                 </div>
                                 <div class="row entry">
                                     <div class="input-group mb-2 mr-sm-2 col-4">
                                         <button class="btn btn-secondary btn-remove input-group-prepend">-</button>
                                         <input type="number" class="form-control" name="numberOfNodes" step="1" value="10" min="1" max="20"/>
                                     </div>
+                                    <div class="range">
                                     <input type="range" class="form-control col-4" name="betweenNodesInLayer" min="0" max="100" step="1" value="20" style="position: relative; top: -4px;">
+                                    </div>
                                 </div>
                                 <div class="row entry">
                                     <div class="input-group mb-2 mr-sm-2 col-4">
                                         <button class="btn btn-secondary btn-remove input-group-prepend">-</button>
                                         <input type="number" class="form-control" name="numberOfNodes" step="1" value="10" min="1" max="20"/>
                                     </div>
+                                    <div class="range">
                                     <input type="range" class="form-control col-4" name="betweenNodesInLayer" min="0" max="100" step="1" value="20" style="position: relative; top: -4px;">
-                                </div>
-                                <div class="row entry">
-                                    <div class="input-group mb-2 mr-sm-2 col-4">
-                                        <button class="btn btn-secondary btn-remove input-group-prepend">-</button>
-                                        <input type="number" class="form-control" name="numberOfNodes" step="1" value="10" min="1" max="20"/>
                                     </div>
-                                    <input type="range" class="form-control col-4" name="betweenNodesInLayer" min="0" max="100" step="1" value="20" style="position: relative; top: -4px;">
                                 </div>
                                 <div class="row entry">
                                     <div class="input-group mb-2 mr-sm-2 col-4">
                                         <button class="btn btn-primary btn-add input-group-prepend">+</button>
                                         <input type="number" class="form-control" name="numberOfNodes" step="1" value="1" min="1" max="20"/>
                                     </div>
+                                    <div class="range">
                                     <input type="range" class="form-control col-4" name="betweenNodesInLayer" min="0" max="100" step="1" value="20" style="position: relative; top: -4px;">
+                                    </div>
                                 </div>
 
                             </div>
