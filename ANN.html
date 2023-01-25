@@ -16,9 +16,6 @@
 
 </head>
 
-<div class="outer">
-    <div class="with-bg"></div>
-</div>
 
 <body>
 
@@ -40,7 +37,7 @@
                                 <div class="row entry">
                                     <span class="input-group mb-2 mr-sm-2 col-4">
                                         <button class="btn btn-secondary btn-remove input-group-prepend">-</button>
-                                        <input type="number" class="form-control" name="numberOfNodes" step="1" value="10" min="1" max="20"/>
+                                        <input type="number" class="form-control" name="numberOfNodes" step="1" value="10" min="1" max="20" onkeyup="if(parseInt(this.value)>20){ this.value =20; return false; }"/>
                                     </span>
                                     <div class="range">
                                     <input type="range" class="form-control col-4" name="betweenNodesInLayer" min="0" max="100" step="1" value="20" style="position: relative; top: -4px;">
@@ -49,7 +46,8 @@
                                 <div class="row entry">
                                     <span class="input-group mb-2 mr-sm-2 col-4">
                                         <button class="btn btn-secondary btn-remove input-group-prepend">-</button>
-                                        <input type="number" class="form-control" name="numberOfNodes" step="1" value="10" min="1" max="20"/>
+                                        <input type="number" class="form-control" name="numberOfNodes" step="1" value="10" min="1" max="20" onkeyup="if(parseInt(this.value)>20){ this.value =20; return false; }"/>
+
                                     </span>
                                     <div class="range">
                                     <input type="range" class="form-control col-4" name="betweenNodesInLayer" min="0" max="100" step="1" value="20" style="position: relative; top: -4px;">
@@ -58,7 +56,7 @@
                                 <div class="row entry">
                                     <div class="input-group mb-2 mr-sm-2 col-4">
                                         <button class="btn btn-secondary btn-remove input-group-prepend">-</button>
-                                        <input type="number" class="form-control" name="numberOfNodes" step="1" value="10" min="1" max="20"/>
+                                        <input type="number" class="form-control" name="numberOfNodes" step="1" value="10" min="1" max="20" onkeyup="if(parseInt(this.value)>20){ this.value =20; return false; }"/>
                                     </div>
                                     <div class="range">
                                     <input type="range" class="form-control col-4" name="betweenNodesInLayer" min="0" max="100" step="1" value="20" style="position: relative; top: -4px;">
@@ -67,7 +65,7 @@
                                 <div class="row entry">
                                     <div class="input-group mb-2 mr-sm-2 col-4">
                                         <button class="btn btn-secondary btn-remove input-group-prepend">-</button>
-                                        <input type="number" class="form-control" name="numberOfNodes" step="1" value="10" min="1" max="20"/>
+                                        <input type="number" class="form-control" name="numberOfNodes" step="1" value="10" min="1" max="20" onkeyup="if(parseInt(this.value)>20){ this.value =20; return false; }"/>
                                     </div>
                                     <div class="range">
                                     <input type="range" class="form-control col-4" name="betweenNodesInLayer" min="0" max="100" step="1" value="20" style="position: relative; top: -4px;">
@@ -76,7 +74,7 @@
                                 <div class="row entry">
                                     <div class="input-group mb-2 mr-sm-2 col-4">
                                         <button class="btn btn-primary btn-add input-group-prepend">+</button>
-                                        <input type="number" class="form-control" name="numberOfNodes" step="1" value="1" min="1" max="20"/>
+                                        <input type="number" class="form-control" name="numberOfNodes" step="1" value="1" min="1" max="20" onkeyup="if(parseInt(this.value)>20){ this.value =20; return false; }"/>
                                     </div>
                                     <div class="range">
                                     <input type="range" class="form-control col-4" name="betweenNodesInLayer" min="0" max="100" step="1" value="20" style="position: relative; top: -4px;">
@@ -94,7 +92,7 @@
         </div>
     </div>
 
-    <div id="count"><span></span><a style="font-size: 1rem" href="https://github.com/alexlenail/NN-SVG">About</a></div>
+    <div id="count"><span></span><a style="font-size: 1rem" href="https://github.com/alexlenail/NN-SVG">LeNail, (2019).</a></div>
 
 
     <script type="text/javascript" src="ANN/js/jquery-3.2.1.slim.min.js" ></script>
@@ -106,6 +104,7 @@
     <script type="text/javascript" src="ANN/js/FCNN.js"></script>
 
     <script type="text/javascript" src="ANN/js/temp.js"></script>
+
 
 </body>
 
