@@ -9,7 +9,7 @@ function restart() {
     fcnn.redraw({'architecture_':architecture});
     fcnn.redistribute({'betweenNodesInLayer_':betweenNodesInLayer});
 
-    $('#count span:first').text(fcnn.graph.nodes.length+" nodes, "+fcnn.graph.links.length+" edges you don't need to draw yourself! ")
+    $('#count span:first').text(fcnn.graph.nodes.length+" nodes, "+fcnn.graph.links.length+" edges ")
 }
 
 restart();
