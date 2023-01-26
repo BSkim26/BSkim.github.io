@@ -35,9 +35,8 @@
         }
         #count {
             position: fixed;
-            bottom: 0;
-            right: 1rem;
-            opacity: 0.4;
+            bottom: 50%;
+            right: 10rem;
             font-weight: 100;
         }
         .text {
@@ -47,4 +46,9 @@
             visibility :hidden;
             display:none;
         }
-        
+        #reference{
+            position: fixed;
+            bottom: 0;
+            right: 1rem;
+            font-weight: 100;
+        }
