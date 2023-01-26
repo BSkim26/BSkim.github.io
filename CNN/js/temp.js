@@ -52,7 +52,7 @@ $(document).on('click', '#architecture .btn-add', function(e) {
     controlForm.find('.entry:not(:last) .btn-add')
         .removeClass('btn-add').addClass('btn-remove')
         .removeClass('btn-primary').addClass('btn-secondary')
-        .html('<span class="fa fa-minus"></span>');
+        .html('<span>-</span>');
 
     restart();
 
@@ -80,7 +80,7 @@ $(document).on('click', '#architecture2 .btn-add', function(e) {
     controlForm.find('.entry:not(:last) .btn-add')
         .removeClass('btn-add').addClass('btn-remove')
         .removeClass('btn-primary').addClass('btn-secondary')
-        .html('<span class="fa fa-minus"></span>');
+        .html('<span>-</span>');
 
     restart();
 
