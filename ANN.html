@@ -8,8 +8,7 @@
 
     <link rel="stylesheet" href="ANN/css/bootstrap.min.css">                <!--온라인 소스 가져오지 않도록 수정-->
     <link rel="stylesheet" href="ANN/css/font.css" >
-    <noscript><link rel="stylesheet" href="ANN/css/ANN.css" /></noscript>
-    <link rel="stylesheet" href="ANN/css/text.css">
+    <link type="text/css" rel="stylesheet" href="ANN/css/text.css">
 
     <title>ANN</title>
 
@@ -25,7 +24,10 @@
         <div class="row">
             <div class="nn-picker">
                 <div class="card">
-                 
+                    <div class="card-header">
+                        <a class="pull-right" data-toggle="collapse" href="#collapsable" role="button">Open/Fold</a>
+
+                    </div>
                     <div class="tab-content collapse show" id="collapsable">
                         <div class="tab-pane fade show active" id="FCNN" role="tabpanel">
                             <h4>ANN Architecture</h4>
