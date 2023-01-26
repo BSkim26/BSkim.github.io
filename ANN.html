@@ -3,7 +3,6 @@
 
 <head>
 
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 
@@ -37,7 +36,7 @@
                                 <div class="row entry">
                                     <span class="input-group mb-2 mr-sm-2 col-4">
                                         <button class="btn btn-secondary btn-remove input-group-prepend">-</button>
-                                        <input type="number" class="form-control" name="numberOfNodes" step="1" value="10" min="1" max="20" onkeydown="if(parseInt(this.value)>20){ this.value =20;}"/>
+                                        <input type="number" class="form-control" name="numberOfNodes" step="1" value="10" min="1" max="20" onkeydown="if(parseInt(this.value)>20){ this.value =20; restart()}"/>
                                     </span>
                                     <div class="range">
                                     <input type="range" class="form-control col-4" name="betweenNodesInLayer" min="0" max="100" step="1" value="20" style="position: relative; top: -4px;">
@@ -46,7 +45,7 @@
                                 <div class="row entry">
                                     <span class="input-group mb-2 mr-sm-2 col-4">
                                         <button class="btn btn-secondary btn-remove input-group-prepend">-</button>
-                                        <input type="number" class="form-control" name="numberOfNodes" step="1" value="10" min="1" max="20" onkeydown="if(parseInt(this.value)>20){ this.value =20;}"/>
+                                        <input type="number" class="form-control" name="numberOfNodes" step="1" value="10" min="1" max="20" onkeydown="if(parseInt(this.value)>20){ this.value =20; restart()}"/>
 
                                     </span>
                                     <div class="range">
@@ -56,7 +55,7 @@
                                 <div class="row entry">
                                     <div class="input-group mb-2 mr-sm-2 col-4">
                                         <button class="btn btn-secondary btn-remove input-group-prepend">-</button>
-                                        <input type="number" class="form-control" name="numberOfNodes" step="1" value="10" min="1" max="20" onkeydown="if(parseInt(this.value)>20){ this.value =20;}"/>
+                                        <input type="number" class="form-control" name="numberOfNodes" step="1" value="10" min="1" max="20" onkeydown="if(parseInt(this.value)>20){ this.value =20; restart()}"/>
                                     </div>
                                     <div class="range">
                                     <input type="range" class="form-control col-4" name="betweenNodesInLayer" min="0" max="100" step="1" value="20" style="position: relative; top: -4px;">
@@ -65,7 +64,7 @@
                                 <div class="row entry">
                                     <div class="input-group mb-2 mr-sm-2 col-4">
                                         <button class="btn btn-secondary btn-remove input-group-prepend">-</button>
-                                        <input type="number" class="form-control" name="numberOfNodes" step="1" value="10" min="1" max="20" onkeydown="if(parseInt(this.value)>20){ this.value =20;}"/>
+                                        <input type="number" class="form-control" name="numberOfNodes" step="1" value="10" min="1" max="20" onkeydown="if(parseInt(this.value)>20){ this.value =20; restart()}"/>
                                     </div>
                                     <div class="range">
                                     <input type="range" class="form-control col-4" name="betweenNodesInLayer" min="0" max="100" step="1" value="20" style="position: relative; top: -4px;">
@@ -74,7 +73,7 @@
                                 <div class="row entry">
                                     <div class="input-group mb-2 mr-sm-2 col-4">
                                         <button class="btn btn-primary btn-add input-group-prepend">+</button>
-                                        <input type="number" class="form-control" name="numberOfNodes" step="1" value="1" min="1" max="20" onkeydown="if(parseInt(this.value)>20){ this.value =20;}"/>
+                                        <input type="number" class="form-control" name="numberOfNodes" step="1" value="1" min="1" max="20" onkeydown="if(parseInt(this.value)>20){ this.value =20; restart()}"/>
                                     </div>
                                     <div class="range">
                                     <input type="range" class="form-control col-4" name="betweenNodesInLayer" min="0" max="100" step="1" value="20" style="position: relative; top: -4px;">
