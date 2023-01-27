@@ -16,7 +16,7 @@ function square(a1, a2) {
     for (j = 1; j <= b1; j++) {
       tag += "<tr>";
       for (i = 1; i <= b2; i++) {
-        tag += "<td>"+j+"."+i+"</td>";
+        tag += "<td>"+"<div id=\"a"+j+i+"\"class=\"draggable\">"+j+"."+i+"</td>";
       }
       tag += "</tr>";
     }
@@ -27,7 +27,7 @@ function square(a1, a2) {
     for (j = 1; j <= b1*b2; j++) {
       tag2 += "<tr>";
       
-        tag2 += "<td>"+"O"+"</td>";
+        tag2 += "<td>"+"<div id=\"b"+j+"\"class=\"draggable right\">"+"O"+"</td>";
       
       tag2 += "</tr>";
     }
@@ -35,4 +35,3 @@ function square(a1, a2) {
     area2.innerHTML = tag2;
   }
 
-  
