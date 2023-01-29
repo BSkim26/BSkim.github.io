@@ -2,13 +2,51 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-
-    <title>CNN 2D_1D</title>
+    <link rel="stylesheet" href="ANN/css/bootstrap.min.css">                <!--온라인 소스 가져오지 않도록 수정-->
+    <link rel="stylesheet" href="ANN/css/font.css" >
+    <link type="text/css" rel="stylesheet" href="ANN/css/text.css">
+    <title>CNN 2D->1D</title>
 
 </head>
 <body>
  
-    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="nn-picker">
+                <div class="card">
+                    <div class="card-header">
+                        <a class="pull-right" data-toggle="collapse" href="#collapsable" role="button">Open/Fold</a>
+
+                    </div>
+                    <div class="tab-content collapse show" id="collapsable">
+                        <div class="tab-pane fade show active" id="FCNN" role="tabpanel">
+                            <h4>CNN 2D->1D Architecture</h4>
+
+                            <hr>
+                            <div id="architecture">
+
+                                <div class="row entry">
+                                    <span class="input-group mb-2 mr-sm-2 col-4">
+                                        행 : <input type="number" id="inputNumber" placeholder="Enter a number"></button>
+                                        열 : <input type="number" id="inputNumber2" placeholder="Enter a number"><button onclick="createBoxes_1()">Create Boxes</button>
+                                    </span>
+                                    <div class="range">
+                                    <input type="range" class="form-control col-4" name="betweenNodesInLayer" min="0" max="100" step="1" value="20" style="position: relative; top: -4px;"> <!--없애면 양식 깨짐-->
+                                    </div>
+                                </div>
+                                
+                                </div>
+
+                            </div>
+
+                            <hr>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <style>
       svg {
@@ -41,8 +79,7 @@
         }
         
       </style>
- 행 : <input type="number" id="inputNumber" placeholder="Enter a number"><button onclick="resetPage()">Reset</button><br>
- 열 : <input type="number" id="inputNumber2" placeholder="Enter a number"><button onclick="createBoxes()">Create Boxes</button>
+
 
       <div class="container">
        
@@ -53,9 +90,16 @@
       <div id="svgContainer"></div>
 
       <script>
+    function createBoxes_1() {
+    svg = document.querySelector("svg");
+    if (svg) {
+      svg.parentNode.removeChild(svg);
+    }
+    createBoxes();
+    }
 
 
- function createBoxes() {
+    function createBoxes() {
     let inputNumber = document.getElementById("inputNumber").value;
     let inputNumber2 = document.getElementById("inputNumber2").value;
     let boxes = document.getElementById("boxes");
@@ -111,16 +155,14 @@
      document.getElementById("svgContainer").appendChild(svg);
   }
 
-      </script>
-
-<script>
       window.onresize = function() {
-    let svg = document.querySelector("svg");
+    svg = document.querySelector("svg");
     if (svg) {
       svg.parentNode.removeChild(svg);
     }
     createBoxes();
 }
+
     </script>
 
 </body>
