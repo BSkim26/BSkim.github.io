@@ -81,7 +81,7 @@ function FCNN() {
         showLabels = showLabels_;
 
         graph.nodes = architecture.map((layer_width, layer_index) => range(layer_width).map(node_index => {return {'id':layer_index+'_'+node_index,'layer':layer_index,'node_index':node_index}}));
-        graph.links = pairWise(graph.nodes).map((nodes) => nodes[0].map(left => nodes[1].map(right => {return right.node_index >= 0 ? {'id':left.id+'-'+right.id, 'source':left.id,'target':right.id,'weight':randomWeight()} : null })));
+        graph.links = pairWise(graph.nodes).map((nodes) => nodes[0].map(left => nodes[1].map(right => {return right.node_index >= 0 ? {'id':left.id+'-'+right.id, 'source':left.id,'target':right.id} : null })));
         graph.nodes = flatten(graph.nodes);
         graph.links = flatten(graph.links).filter(l => (l && (showBias ? (parseInt(l['target'].split('_')[0]) !== architecture.length-1 ? (l['target'].split('_')[1] !== '0') : true) : true)));
 
@@ -142,10 +142,10 @@ function FCNN() {
 
         if (nnDirection == 'up') { x = xt; y = yt; }
 
-        node.attr('cx', function(d) { return x(d.layer, d.node_index); })
+        node.attr('cx', function(d) { return x(d.layer, d.node_index); })               //node 주소
             .attr('cy', function(d) { return y(d.layer, d.node_index); });
 
-        link.attr("d", (d) => "M" + x(...indices_from_id(d.source)) + "," +
+        link.attr("d", (d) => "M" + x(...indices_from_id(d.source)) + "," +             //연결하는 부분 
                                     y(...indices_from_id(d.source)) + ", " +
                                     x(...indices_from_id(d.target)) + "," +
                                     y(...indices_from_id(d.target)));
