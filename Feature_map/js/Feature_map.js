@@ -30,6 +30,8 @@ function createBoxes_1() {
     function createBoxes() {
         let inputNumber = document.getElementById("inputNumber").value;
         let inputNumber2 = document.getElementById("inputNumber2").value;
+        let FilterNumber = document.getElementById("FilterNumber").value;
+        let FilterNumber2 = document.getElementById("FilterNumber2").value;
         let boxes = document.getElementById("boxes");
         let boxes2 = document.getElementById("boxes2");
     let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -56,28 +58,32 @@ function createBoxes_1() {
     }
 
     // Create 2n boxes
-    for (let i = 0; i < inputNumber*inputNumber2; i++) {
+    for (let i = 0; i < (inputNumber-FilterNumber+1)*(inputNumber2-FilterNumber2+1); i++) {
         let box = document.createElement("div");
         box.classList.add("box2");
             box.id = "box2_" + i;
         boxes2.appendChild(box);
     }
-
+    let colors = ["red", "green", "blue", "orange","lime","linen","coral","cyan","darkgray"];
     // Create and add lines to svg element
-    for (let i = 0; i < inputNumber; i++) {
-      for (let j = 0; j < inputNumber2; j++) {
-        let box = document.getElementById("box_" + i + "_" + j);
-        let box2 = document.getElementById("box2_" + (i*inputNumber2 + j));
-        let line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-        line.setAttribute("x1", box.offsetLeft + box.offsetWidth/2);
-        line.setAttribute("y1", box.offsetTop + box.offsetHeight/2);
-        line.setAttribute("x2", box2.offsetLeft + box2.offsetWidth/2);
-        line.setAttribute("y2", box2.offsetTop + box2.offsetHeight/2);
-        line.style.stroke = "black";
-        line.style.strokeWidth = "2px";
-        svg.appendChild(line);
+    for(let a = 0; a < inputNumber2-FilterNumber2+1; a++){
+      for(let b = 0; b < inputNumber-FilterNumber+1; b++){
+          for (let i = 0; i < FilterNumber; i++) {
+              for (let j = 0; j < FilterNumber2; j++) {
+                  let box = document.getElementById("box_" + (i+b) + "_" + (j+a));
+                  let box2 = document.getElementById("box2_" + (a+b*(inputNumber2-FilterNumber2+1)));
+                  let line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                  line.setAttribute("x1", box.offsetLeft + box.offsetWidth/2);
+                  line.setAttribute("y1", box.offsetTop + box.offsetHeight/2);
+                  line.setAttribute("x2", box2.offsetLeft + box2.offsetWidth/2);
+                  line.setAttribute("y2", box2.offsetTop + box2.offsetHeight/2);
+                  line.style.stroke = colors[(a+b*(inputNumber2-FilterNumber2+1)) % colors.length];
+                  line.style.strokeWidth = "2px";
+                  svg.appendChild(line);
+              }
+          }
       }
-    }
+  }
 
     // Add svg element to body
      document.getElementById("svgContainer").appendChild(svg);
@@ -132,3 +138,4 @@ function getDistance(touch1, touch2) {
   const yDiff = touch1.clientY - touch2.clientY;
   return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
 }
+
