@@ -7,10 +7,6 @@
 		}
 	}())
 }(this, (function() {
-	//     Underscore.js 1.13.0
-	//     https://underscorejs.org
-	//     (c) 2009-2021 Jeremy Ashkenas, Julian Gonggrijp, and DocumentCloud and Investigative Reporters & Editors
-	//     Underscore may be freely distributed under the MIT license.
 	var n = "1.13.0",
 		r = "object" == typeof self && self.self === self && self || "object" == typeof global && global.global === global && global || Function("return this")() || {},
 		t = Array.prototype,

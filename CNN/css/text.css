@@ -1,4 +1,4 @@
-* { font-weight: 100; }
+        * { font-weight: 100; }
         h1 { font-weight: 100; }
         #graph-container {
             top: 0;
@@ -35,35 +35,11 @@
         }
         #count {
             position: fixed;
-            bottom: 50%;
-            right: 10rem;
+            bottom: 0;
+            right: 1rem;
+            opacity: 0.4;
             font-weight: 100;
         }
         .text {
             font-weight: 300;
         }
-        .range{
-            visibility :hidden;
-            display:none;
-        }
-        #reference{
-            position: fixed;
-            bottom: 0;
-            right: 1rem;
-            font-weight: 100;
-        }
-        #graph-container.space-evenly{justify-content: space-evenly;}
-        
-        table{
-            width:10rem;
-            height:10rem;
-        }
-        
-        #area2{
-            position:absolute;
-            top:-10%;
-            font-size: 40px;
-        }
-        .display_table { display:table; width:200px; height:200px; border:2px solid #6d82f3;}
-        .display_table_cell { display:table-cell; text-align:center; vertical-align:middle; }
-      
