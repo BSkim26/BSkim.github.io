@@ -108,3 +108,27 @@ document.addEventListener("wheel", function (e) {
     zoomElement.style.transform = `scale(${(zoom -= ZOOM_SPEED)})`;
   }
 });
+
+let initialDistance;
+let currentZoom = 1;
+
+zoomElement.addEventListener('touchstart', function (e) {
+  if (e.touches.length === 2) {
+    initialDistance = getDistance(e.touches[0], e.touches[1]);
+  }
+});
+
+zoomElement.addEventListener('touchmove', function (e) {
+  if (e.touches.length === 2) {
+    const currentDistance = getDistance(e.touches[0], e.touches[1]);
+    const zoomDelta = currentDistance / initialDistance;
+    currentZoom = Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, currentZoom * zoomDelta));
+    zoomElement.style.transform = `scale(${currentZoom})`;
+  }
+});
+
+function getDistance(touch1, touch2) {
+  const xDiff = touch1.clientX - touch2.clientX;
+  const yDiff = touch1.clientY - touch2.clientY;
+  return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
+}
