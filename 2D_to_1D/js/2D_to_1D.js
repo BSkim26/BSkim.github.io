@@ -1,10 +1,21 @@
 var a=null;
+
+
 function createBoxes_time() {
     svg = document.querySelector("svg");
     if (svg) {
       svg.parentNode.removeChild(svg);
     }
     a= setTimeout(createBoxes_1, 400);
+}
+
+function Boxes_check() {
+    if(document.getElementById("inputNumber").value>=5){alert('0, 음수, 4이상은 입력할 수 없습니다.');}
+    else if(document.getElementById("inputNumber").value<=0){alert('0, 음수, 4이상은 입력할 수 없습니다.');}
+    else if(document.getElementById("inputNumber2").value>=5){alert('0, 음수, 4이상은 입력할 수 없습니다.');}
+    else if(document.getElementById("inputNumber2").value<=0){alert('0, 음수, 4이상은 입력할 수 없습니다.');}
+    else{createBoxes_1();}
+
 }
 
 function createBoxes_1() {
@@ -17,10 +28,10 @@ function createBoxes_1() {
 
 
     function createBoxes() {
-    let inputNumber = document.getElementById("inputNumber").value;
-    let inputNumber2 = document.getElementById("inputNumber2").value;
-    let boxes = document.getElementById("boxes");
-    let boxes2 = document.getElementById("boxes2");
+        let inputNumber = document.getElementById("inputNumber").value;
+        let inputNumber2 = document.getElementById("inputNumber2").value;
+        let boxes = document.getElementById("boxes");
+        let boxes2 = document.getElementById("boxes2");
     let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 
     
