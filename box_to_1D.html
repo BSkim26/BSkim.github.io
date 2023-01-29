@@ -2,10 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <link rel="stylesheet" href="2D_to_1D/css/bootstrap.min.css">                <!--온라인 소스 가져오지 않도록 수정-->
-    <link rel="stylesheet" href="2D_to_1D/css/font.css" >
-    <link type="text/css" rel="stylesheet" href="2D_to_1D/css/text.css">
-    <link type="text/css" rel="stylesheet" href="2D_to_1D/css/2D_to_1D.css">
+    <link rel="stylesheet" href="box_to_1D/css/bootstrap.min.css">                <!--온라인 소스 가져오지 않도록 수정-->
+    <link rel="stylesheet" href="box_to_1D/css/font.css" >
+    <link type="text/css" rel="stylesheet" href="box_to_1D/css/text.css">
+    <link type="text/css" rel="stylesheet" href="box_to_1D/css/box_to_1D.css">
 
     <title>CNN 2D->1D</title>
 
@@ -29,8 +29,12 @@
 
                                 <div class="row entry">
                                     <span class="input-group mb-2 mr-sm-2 col-4">
+                                        배열 크기
                                         행 : <input type="number" id="inputNumber" placeholder="Enter a number">
-                                        열 : <input type="number" id="inputNumber2" placeholder="Enter a number"><button onclick="Boxes_check()">Create Boxes</button>
+                                        열 : <input type="number" id="inputNumber2" placeholder="Enter a number">
+                                        필터 크기
+                                        행 : <input type="number" id="ㅌㅌㅌ" placeholder="Enter a number">
+                                        열 : <input type="number" id="ㅌㅌㅌ" placeholder="Enter a number"><button onclick="Boxes_check()">Create Boxes</button>
                                     </span>
 
                                     </div>
@@ -56,17 +60,19 @@
         <div id="boxes"></div>
         <div id="boxes2"></div>
         <div id="svgContainer"></div>
+        
       </div>
 
-
+      
 
 </body>
 
-<script type="text/javascript" src="2D_to_1D/js/jquery-3.2.1.slim.min.js" ></script>
-<script type="text/javascript" src="2D_to_1D/js/popper.min.js"></script>
-<script type="text/javascript" src="2D_to_1D/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="box_to_1D/js/jquery-3.2.1.slim.min.js" ></script>
+<script type="text/javascript" src="box_to_1D/js/popper.min.js"></script>
+<script type="text/javascript" src="box_to_1D/js/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="2D_to_1D/js/d3.v5.min.js"></script>
-<script type="text/javascript" src="2D_to_1D/js/util.js"></script>
-<script type="text/javascript" src="2D_to_1D/js/2D_to_1D.js" ></script>
+<script type="text/javascript" src="box_to_1D/js/d3.v5.min.js"></script>
+<script type="text/javascript" src="box_to_1D/js/util.js"></script>
+<script type="text/javascript" src="box_to_1D/js/box_to_1D.js" ></script>
+
 </html>

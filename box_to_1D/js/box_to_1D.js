@@ -90,6 +90,11 @@ function createBoxes_1() {
     }
     createBoxes();
 }
+
+
+
+
+
 const zoomElement = document.querySelector(".container");
 let zoom = 1;
 const ZOOM_SPEED = 0.1;
