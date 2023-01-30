@@ -66,8 +66,6 @@ function createBoxes_1() {
         box.id = "box_" + i + "_" + j;
         boxes.appendChild(box);
       }
-      let breakLine = document.createElement("br");
-      boxes.appendChild(breakLine);
     }
 
     // Create Circle
@@ -85,7 +83,7 @@ function createBoxes_1() {
       boxes3.appendChild(box);
   }
 
-    let colors = ["red", "blue", "green",  "linen", "orange","lime","coral","cyan","darkgray"];
+    let colors = ["red", "blue", "green", "cyan", "linen", "orange","lime","coral", "darkgray"];
     // Create and add lines to svg element
     for(let a = 0; a < inputNumber2-FilterNumber2+1; a++){
       for(let b = 0; b < inputNumber-FilterNumber+1; b++){
@@ -101,50 +99,6 @@ function createBoxes_1() {
                   line.style.stroke = colors[(a+b*(inputNumber2-FilterNumber2+1)) % colors.length];
                   line.style.strokeWidth = "2px";
                   svg.appendChild(line);
-                  
-                  if(i==0&&j==0){
-                    left_off=box.offsetLeft;
-                    left_off_h= box.offsetTop;
-                    left=box.offsetLeft + box.offsetWidth/2;
-                    left_h=box.offsetTop + box.offsetHeight/2;
-                  }
-
-                  if(i==0&&j==1)
-                  {
-                    right_off=box.offsetLeft;
-                    right=box.offsetLeft + box.offsetWidth/2;
-                  }
-                  if(i==1&&j==0)
-                  {
-                    right_off_h= box.offsetTop;
-                    right_h=box.offsetTop + box.offsetHeight/2;
-                  }
-                  if(FilterNumber!=1&&FilterNumber2!=1){
-                    if(i==(FilterNumber-1)&&j==(FilterNumber2-1)){
-                      // Create a rectangle that covers the starting point of the line
-                      let rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-                      rect.setAttribute("x", left_off);
-                      rect.setAttribute("y", left_off_h);
-                      rect.setAttribute("width", (right-left) * (FilterNumber2)-(right_off-left_off-2*box.offsetWidth/2));
-                      rect.setAttribute("height", (right_h-left_h)* (FilterNumber)-(right_off_h-left_off_h-2*box.offsetHeight/2));
-                      rect.style.strokeWidth = "3px";
-                      rect.style.fill = "none";
-                      rect.style.stroke = colors[(a + b * (inputNumber2 - FilterNumber2 + 1)) % colors.length];
-                      svg.appendChild(rect);
-                      }
-                  }
-                  else
-                  {
-                      let rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-                      rect.setAttribute("x", left_off);
-                      rect.setAttribute("y", left_off_h);
-                      rect.setAttribute("width", box.offsetWidth);
-                      rect.setAttribute("height", box.offsetHeight);
-                      rect.style.strokeWidth = "3px";
-                      rect.style.fill = "none";
-                      rect.style.stroke = colors[(a + b * (inputNumber2 - FilterNumber2 + 1)) % colors.length];
-                      svg.appendChild(rect);
-                  }
                   
               }
           }
@@ -165,11 +119,11 @@ function createBoxes_1() {
           }
         }
 
-        
+    
     // Add svg element to body
      document.getElementById("svgContainer").appendChild(svg);
-
-        $('#count span:first').html(
+ 
+     $('#count span:first').html(
       (inputNumber * inputNumber2) + ((inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1)) + parseInt(outputNumber)+
       " nodes <br>" + 
       (FilterNumber * FilterNumber2 * (inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1) + 
@@ -178,6 +132,7 @@ function createBoxes_1() {
       (FilterNumber * FilterNumber2 + 1+(inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1)*(parseInt(outputNumber))+1) + 
       " parameters"
     );
+
   }
 
       window.onresize = function() {
