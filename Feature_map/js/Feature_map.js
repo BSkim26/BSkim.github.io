@@ -10,12 +10,21 @@ function createBoxes_time() {
 }
 
 function Boxes_check() {
-    if(document.getElementById("inputNumber").value>=5){alert('0, 음수, 4이상은 입력할 수 없습니다.');}
-    else if(document.getElementById("inputNumber").value<=0){alert('0, 음수, 4이상은 입력할 수 없습니다.');}
-    else if(document.getElementById("inputNumber2").value>=5){alert('0, 음수, 4이상은 입력할 수 없습니다.');}
-    else if(document.getElementById("inputNumber2").value<=0){alert('0, 음수, 4이상은 입력할 수 없습니다.');}
-    else{createBoxes_1();}
-
+  if (document.getElementById("inputNumber").value >= 5 || document.getElementById("inputNumber").value <= 0 
+  || document.getElementById("inputNumber2").value >= 5 || document.getElementById("inputNumber2").value <= 0
+  || document.getElementById("FilterNumber").value >= 5 || document.getElementById("FilterNumber").value <= 0 
+  || document.getElementById("FilterNumber2").value >= 5|| document.getElementById("FilterNumber2").value <= 0) 
+  {
+    alert('0, 음수, 5이상은 입력할 수 없습니다.');
+  } 
+  else if (document.getElementById("inputNumber").value < document.getElementById("FilterNumber").value 
+  || document.getElementById("inputNumber2").value < document.getElementById("FilterNumber2").value) 
+  {
+    alert('필터가 Input Feature map보다 클 수 없습니다.');
+  } 
+  else {
+    createBoxes_1();
+  }
 }
 
 function createBoxes_1() {
@@ -64,7 +73,7 @@ function createBoxes_1() {
             box.id = "box2_" + i;
         boxes2.appendChild(box);
     }
-    let colors = ["red", "green", "blue", "orange","lime","linen","coral","cyan","darkgray"];
+    let colors = ["red", "blue", "green",  "linen", "orange","lime","coral","cyan","darkgray"];
     // Create and add lines to svg element
     for(let a = 0; a < inputNumber2-FilterNumber2+1; a++){
       for(let b = 0; b < inputNumber-FilterNumber+1; b++){
@@ -80,10 +89,55 @@ function createBoxes_1() {
                   line.style.stroke = colors[(a+b*(inputNumber2-FilterNumber2+1)) % colors.length];
                   line.style.strokeWidth = "2px";
                   svg.appendChild(line);
+                  
+                  if(i==0&&j==0){
+                    left_off=box.offsetLeft;
+                    left_off_h= box.offsetTop;
+                    left=box.offsetLeft + box.offsetWidth/2;
+                    left_h=box.offsetTop + box.offsetHeight/2;
+                  }
+
+                  if(i==0&&j==1)
+                  {
+                    right_off=box.offsetLeft;
+                    right=box.offsetLeft + box.offsetWidth/2;
+                  }
+                  if(i==1&&j==0)
+                  {
+                    right_off_h= box.offsetTop;
+                    right_h=box.offsetTop + box.offsetHeight/2;
+                  }
+                  if(FilterNumber!=1&&FilterNumber2!=1){
+                    if(i==(FilterNumber-1)&&j==(FilterNumber2-1)){
+                      // Create a rectangle that covers the starting point of the line
+                      let rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                      rect.setAttribute("x", left_off);
+                      rect.setAttribute("y", left_off_h);
+                      rect.setAttribute("width", (right-left) * (FilterNumber2)-(right_off-left_off-2*box.offsetWidth/2));
+                      rect.setAttribute("height", (right_h-left_h)* (FilterNumber)-(right_off_h-left_off_h-2*box.offsetHeight/2));
+                      rect.style.strokeWidth = "3px";
+                      rect.style.fill = "none";
+                      rect.style.stroke = colors[(a + b * (inputNumber2 - FilterNumber2 + 1)) % colors.length];
+                      svg.appendChild(rect);
+                      }
+                  }
+                  else
+                  {
+                      let rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                      rect.setAttribute("x", left_off);
+                      rect.setAttribute("y", left_off_h);
+                      rect.setAttribute("width", box.offsetWidth);
+                      rect.setAttribute("height", box.offsetHeight);
+                      rect.style.strokeWidth = "3px";
+                      rect.style.fill = "none";
+                      rect.style.stroke = colors[(a + b * (inputNumber2 - FilterNumber2 + 1)) % colors.length];
+                      svg.appendChild(rect);
+                  }
+                  
               }
           }
       }
-  }
+    }
 
     // Add svg element to body
      document.getElementById("svgContainer").appendChild(svg);
