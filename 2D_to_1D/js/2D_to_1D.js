@@ -30,6 +30,7 @@ function createBoxes_1() {
     function createBoxes() {
         let inputNumber = document.getElementById("inputNumber").value;
         let inputNumber2 = document.getElementById("inputNumber2").value;
+        let outputNumber = document.getElementById("outputNumber").value;
         let boxes = document.getElementById("boxes");
         let boxes2 = document.getElementById("boxes2");
     let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -41,6 +42,9 @@ function createBoxes_1() {
     }
     while (boxes2.firstChild) {
       boxes2.removeChild(boxes2.firstChild);
+    }
+    while (boxes3.firstChild) {
+      boxes3.removeChild(boxes3.firstChild);
     }
 
     // Create nxn boxes
@@ -62,6 +66,13 @@ function createBoxes_1() {
             box.id = "box2_" + i;
         boxes2.appendChild(box);
     }
+    
+    for (let i = 0; i < outputNumber; i++) {
+      let box = document.createElement("div");
+      box.classList.add("box3");
+          box.id = "box3_" + i;
+      boxes3.appendChild(box);
+  }
 
     // Create and add lines to svg element
     for (let i = 0; i < inputNumber; i++) {
@@ -79,6 +90,21 @@ function createBoxes_1() {
       }
     }
 
+    for(let c = 0; c < outputNumber; c++){
+      for(let d = 0; d < inputNumber*inputNumber2; d++){
+                  let box2_1 = document.getElementById("box2_" + d);
+                  let box3_1 = document.getElementById("box3_" + c);
+                  var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                  line.setAttribute("x1", box2_1.offsetLeft + box2_1.offsetWidth/2);
+                  line.setAttribute("y1", box2_1.offsetTop + box2_1.offsetHeight/2);
+                  line.setAttribute("x2", box3_1.offsetLeft + box3_1.offsetWidth/2);
+                  line.setAttribute("y2", box3_1.offsetTop + box3_1.offsetHeight/2);
+                  line.style.stroke = "black";
+                  line.style.strokeWidth = "2px";
+                  svg.appendChild(line);
+          }
+        }
+        
     // Add svg element to body
      document.getElementById("svgContainer").appendChild(svg);
   }

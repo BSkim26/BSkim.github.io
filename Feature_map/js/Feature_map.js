@@ -41,10 +41,10 @@ function createBoxes_1() {
         let inputNumber2 = document.getElementById("inputNumber2").value;
         let FilterNumber = document.getElementById("FilterNumber").value;
         let FilterNumber2 = document.getElementById("FilterNumber2").value;
+        let outputNumber = document.getElementById("outputNumber").value;
         let boxes = document.getElementById("boxes");
         let boxes2 = document.getElementById("boxes2");
-    let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-
+      let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     
     // Remove any existing boxes
     while (boxes.firstChild) {
@@ -52,6 +52,9 @@ function createBoxes_1() {
     }
     while (boxes2.firstChild) {
       boxes2.removeChild(boxes2.firstChild);
+    }
+    while (boxes3.firstChild) {
+      boxes3.removeChild(boxes3.firstChild);
     }
 
     // Create nxn boxes
@@ -66,13 +69,21 @@ function createBoxes_1() {
       boxes.appendChild(breakLine);
     }
 
-    // Create 2n boxes
+    // Create Circle
     for (let i = 0; i < (inputNumber-FilterNumber+1)*(inputNumber2-FilterNumber2+1); i++) {
         let box = document.createElement("div");
         box.classList.add("box2");
             box.id = "box2_" + i;
         boxes2.appendChild(box);
     }
+
+    for (let i = 0; i < outputNumber; i++) {
+      let box = document.createElement("div");
+      box.classList.add("box3");
+          box.id = "box3_" + i;
+      boxes3.appendChild(box);
+  }
+
     let colors = ["red", "blue", "green",  "linen", "orange","lime","coral","cyan","darkgray"];
     // Create and add lines to svg element
     for(let a = 0; a < inputNumber2-FilterNumber2+1; a++){
@@ -81,7 +92,7 @@ function createBoxes_1() {
               for (let j = 0; j < FilterNumber2; j++) {
                   let box = document.getElementById("box_" + (i+b) + "_" + (j+a));
                   let box2 = document.getElementById("box2_" + (a+b*(inputNumber2-FilterNumber2+1)));
-                  let line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                  var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
                   line.setAttribute("x1", box.offsetLeft + box.offsetWidth/2);
                   line.setAttribute("y1", box.offsetTop + box.offsetHeight/2);
                   line.setAttribute("x2", box2.offsetLeft + box2.offsetWidth/2);
@@ -138,7 +149,22 @@ function createBoxes_1() {
           }
       }
     }
+    for(let c = 0; c < outputNumber; c++){
+      for(let d = 0; d < (inputNumber-FilterNumber+1)*(inputNumber2-FilterNumber2+1); d++){
+                  let box2_1 = document.getElementById("box2_" + d);
+                  let box3_1 = document.getElementById("box3_" + c);
+                  var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                  line.setAttribute("x1", box2_1.offsetLeft + box2_1.offsetWidth/2);
+                  line.setAttribute("y1", box2_1.offsetTop + box2_1.offsetHeight/2);
+                  line.setAttribute("x2", box3_1.offsetLeft + box3_1.offsetWidth/2);
+                  line.setAttribute("y2", box3_1.offsetTop + box3_1.offsetHeight/2);
+                  line.style.stroke = "black";
+                  line.style.strokeWidth = "2px";
+                  svg.appendChild(line);
+          }
+        }
 
+    
     // Add svg element to body
      document.getElementById("svgContainer").appendChild(svg);
   }
