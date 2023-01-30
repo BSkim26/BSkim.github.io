@@ -184,4 +184,3 @@ function getDistance(touch1, touch2) {
   const yDiff = touch1.clientY - touch2.clientY;
   return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
 }
-
