@@ -10,12 +10,15 @@ function createBoxes_time() {
 }
 
 function Boxes_check() {
-    if(document.getElementById("inputNumber").value>=5){alert('0, 음수, 4이상은 입력할 수 없습니다.');}
-    else if(document.getElementById("inputNumber").value<=0){alert('0, 음수, 4이상은 입력할 수 없습니다.');}
-    else if(document.getElementById("inputNumber2").value>=5){alert('0, 음수, 4이상은 입력할 수 없습니다.');}
-    else if(document.getElementById("inputNumber2").value<=0){alert('0, 음수, 4이상은 입력할 수 없습니다.');}
-    else{createBoxes_1();}
-
+if (document.getElementById("inputNumber").value >= 5 || document.getElementById("inputNumber").value <= 0 
+|| document.getElementById("inputNumber2").value >= 5 || document.getElementById("inputNumber2").value <= 0
+|| document.getElementById("outputNumber").value >= 5|| document.getElementById("outputNumber").value <= 0) 
+{
+  alert('0, 음수, 5이상은 입력할 수 없습니다.');
+} 
+else {
+  createBoxes_1();
+}
 }
 
 function createBoxes_1() {
