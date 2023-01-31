@@ -1,0 +1,168 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="Feature_map_3D/css/bootstrap.min.css">                <!--온라인 소스 가져오지 않도록 수정-->
+    <link rel="stylesheet" href="Feature_map_3D/css/font.css" >
+    <link type="text/css" rel="stylesheet" href="Feature_map_3D/css/text.css">
+    <link type="text/css" rel="stylesheet" href="Feature_map_3D/css/Feature_map_3D.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+    <title>Feature_map_3D</title>
+    <script>
+        function createBoxes() {
+        var rows = document.getElementById("inputNumber0").value;
+        var columns = document.getElementById("inputNumber1").value;
+        var depths = document.getElementById("inputNumber2").value;
+
+
+        var f_width = document.getElementById("FilterNumber0").value;
+        var f_height = document.getElementById("FilterNumber1").value;
+        var f_count = document.getElementById("FilterNumber2").value;
+
+        var f_width1 = document.getElementById("FilterNumber1_0").value;
+        var f_height1 = document.getElementById("FilterNumber1_1").value;
+        var f_count1 = document.getElementById("FilterNumber1_2").value;
+
+        var f_width2 = document.getElementById("FilterNumber2_0").value;
+        var f_height2 = document.getElementById("FilterNumber2_1").value;
+        var f_count2 = document.getElementById("FilterNumber2_2").value;
+
+        let boxes = document.getElementById("boxes");
+        var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        while (boxes.firstChild) {
+      boxes.removeChild(boxes.firstChild);
+    }
+        
+  for (let j = 0; j < depths; j++) {
+    var box = document.createElement("div");
+    box.classList.add("box");
+    box.style.width = columns * 40 + "px";
+    box.style.height = rows * 40 + "px";
+    box.style.left = ((window.innerWidth / 6) + (5 * j)) + "px";
+    box.style.top = ((window.innerHeight / 2) + (5 * j)) + "px";
+    boxes.appendChild(box);
+  }
+
+  for (let j = 0; j < f_count; j++) {
+    var box = document.createElement("div");
+    box.classList.add("box");
+    box.style.width = (columns-f_height +1) * 40 + "px";
+    box.style.height = (rows-f_width+1) * 40 + "px";
+    box.style.left = ((window.innerWidth / 3) + (5 * j)) + "px";
+    box.style.top = ((window.innerHeight / 2) + (5 * j)) + "px";
+    boxes.appendChild(box);
+  }
+
+  for (let j = 0; j < f_count1; j++) {
+    var box = document.createElement("div");
+    box.classList.add("box");
+    box.style.width = ((columns-f_height +1)-f_height1 +1) * 40 + "px";
+    box.style.height = ((rows-f_width+1)-f_width1+1) * 40 + "px";
+    box.style.left = ((window.innerWidth / 2) + (5 * j)) + "px";
+    box.style.top = ((window.innerHeight / 2) + (5 * j)) + "px";
+    boxes.appendChild(box);
+  }
+
+  for (let j = 0; j < f_count2; j++) {
+    var box = document.createElement("div");
+    box.classList.add("box");
+    box.style.width = (((columns-f_height +1)-f_height1 +1)-f_height2 +1) * 40 + "px";
+    box.style.height = (((rows-f_width+1)-f_width1+1)-f_width2+1) * 40 + "px";
+    box.style.left = ((window.innerWidth /1.5) + (5 * j)) + "px";
+    box.style.top = ((window.innerHeight / 2) + (5 * j)) + "px";
+    boxes.appendChild(box);
+  }
+
+        }
+
+        
+      </script>
+</head>
+<body>
+ 
+    <div class="container-fluid">
+        <div class="row">
+            <div class="nn-picker">
+                <div class="card">
+                    <div class="card-header">
+                        <button class="btn btn-secondary btn-remove input-group-prepend pull-right" data-toggle="collapse" href="#collapsable" onclick="createBoxes_time()">Open/Fold</button>
+                        <button class="btn btn-secondary btn-remove input-group-prepend" onclick="location.href='index.html'" >Back Main</button>
+                    </div>
+                    <div class="tab-content collapse show" id="collapsable">
+                        <div class="tab-pane fade show active" id="FCNN" role="tabpanel">
+                            <h4>Feature_map_3D</h4>
+
+                            <hr>
+                            <div id="architecture">
+
+                                <div class="row entry">
+                                    <span class="input-group mb-2 mr-sm-2 col-4">
+                                        배열 크기<br>
+                                        rows : <input type="number" id="inputNumber0" placeholder="Enter a number">
+                                        columns : <input type="number" id="inputNumber1" placeholder="Enter a number">
+                                        depths : <input type="number" id="inputNumber2" placeholder="Enter a number">
+
+                                        필터 크기<br>
+                                        rows : <input type="number" id="FilterNumber0" placeholder="Enter a number">
+                                        columns : <input type="number" id="FilterNumber1" placeholder="Enter a number">
+                                        count : <input type="number" id="FilterNumber2" placeholder="Enter a number"></input>
+
+                                        필터 크기<br>
+                                        rows : <input type="number" id="FilterNumber1_0" placeholder="Enter a number">
+                                        columns : <input type="number" id="FilterNumber1_1" placeholder="Enter a number">
+                                        count : <input type="number" id="FilterNumber1_2" placeholder="Enter a number"></input>
+
+                                        필터 크기<br>
+                                        rows : <input type="number" id="FilterNumber2_0" placeholder="Enter a number">
+                                        columns : <input type="number" id="FilterNumber2_1" placeholder="Enter a number">
+                                        count : <input type="number" id="FilterNumber2_2" placeholder="Enter a number"></input>
+
+                                        <!--노드 개수<br>
+                                        크기 : <input type="number" id="outputNumber"  name="outputNumber" placeholder="Enter a number">
+                                        크기 : <input type="number" id="outputNumber"  name="outputNumber" placeholder="Enter a number">
+                                        크기 : <input type="number" id="outputNumber"  name="outputNumber" placeholder="Enter a number">
+                                        크기 : <input type="number" id="outputNumber"  name="outputNumber" placeholder="Enter a number">
+                                        -->
+                                        <br><button class="btn btn-primary btn-add input-group-prepend" onclick="createBoxes()">Create</button>
+                                    </span>
+
+                                    </div>
+                                </div>
+                                
+                                </div>
+
+                            </div>
+
+                            <hr>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" draggable="true">
+
+    <div id="boxes"></div>
+
+</div>
+
+
+      
+      <div id="count"><span></span></div>
+
+</body>
+
+<script type="text/javascript" src="Feature_map_3D/js/jquery-3.2.1.slim.min.js" ></script>
+<script type="text/javascript" src="Feature_map_3D/js/popper.min.js"></script>
+<script type="text/javascript" src="Feature_map_3D/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="Feature_map_3D/js/d3.v5.min.js"></script>
+<script type="text/javascript" src="Feature_map_3D/js/util.js"></script>
+<script type="text/javascript" src="Feature_map_3D/js/Feature_map_3D.js" ></script>
+
+</html>
