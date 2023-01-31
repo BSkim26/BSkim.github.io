@@ -14,7 +14,7 @@ function Boxes_check() {
   || document.getElementById("inputNumber2").value >= 5 || document.getElementById("inputNumber2").value <= 0
   || document.getElementById("FilterNumber").value >= 5 || document.getElementById("FilterNumber").value <= 0 
   || document.getElementById("FilterNumber2").value >= 5|| document.getElementById("FilterNumber2").value <= 0
-  || $('input[name=outputNumber]').val() >= 5|| $('input[name=outputNumber]').val() <= 0) 
+  || $('input[name=outputNumber]').val() >= 5|| $('input[name=outputNumber]').val() <= -1) 
   {
     alert('0, 음수, 5이상은 입력할 수 없습니다.');
   } 
@@ -171,19 +171,54 @@ function createBoxes_1() {
           }
         }
 
+        for(let c = 0; c < outputNumber; c++){
+          for(let d = 0; d < (inputNumber-FilterNumber+1); d++){
+            for(let e = 0; e < (inputNumber2-FilterNumber2+1); e++){
+                      let box2_1 = document.getElementById("box2_" + d+"_"+e);
+                      let box3_1 = document.getElementById("box3_" + c);
+                      var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                      line.setAttribute("x1", box2_1.offsetLeft + box2_1.offsetWidth/2);
+                      line.setAttribute("y1", box2_1.offsetTop + box2_1.offsetHeight/2);
+                      line.setAttribute("x2", box3_1.offsetLeft + box3_1.offsetWidth/2);
+                      line.setAttribute("y2", box3_1.offsetTop + box3_1.offsetHeight/2);
+                      line.style.stroke = "black";
+                      line.style.strokeWidth = "2px";
+                      svg.appendChild(line);
+            }
+              }
+            }
+
         
     // Add svg element to body
      document.getElementById("svgContainer").appendChild(svg);
 
-        $('#count span:first').html(
-      (inputNumber * inputNumber2) + ((inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1)) + parseInt(outputNumber)+
-      " nodes <br>" + 
-      (FilterNumber * FilterNumber2 * (inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1) + 
-       (inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1) * parseInt(outputNumber)) + 
-      " edges <br>" + 
-      (FilterNumber * FilterNumber2 + 1+(inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1)*(parseInt(outputNumber))+1) + 
-      " parameters"
+     //count parameter
+     if(outputNumber!=0){
+      $('#count span:first').html(
+        (inputNumber * inputNumber2) + ((inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1)) + parseInt(outputNumber)+
+        " nodes <br>" + 
+        (FilterNumber * FilterNumber2 * (inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1) + 
+        (inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1) * parseInt(outputNumber)) + 
+        " edges <br>" + 
+        (FilterNumber * FilterNumber2 + 1+(inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1)*(parseInt(outputNumber))+1) + 
+        " parameters <br>" +
+        (FilterNumber * FilterNumber2 *(inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1))+
+          "FLOPS"
     );
+      }
+      else{
+        $('#count span:first').html(
+          (inputNumber * inputNumber2) + ((inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1)) + parseInt(outputNumber)+
+          " nodes <br>" + 
+          (FilterNumber * FilterNumber2 * (inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1) + 
+           (inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1) * parseInt(outputNumber)) + 
+          " edges <br>" + 
+          (FilterNumber * FilterNumber2 + 1+(inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1)*(parseInt(outputNumber))) + 
+          " parameters <br>"+
+          (FilterNumber * FilterNumber2 *(inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1))+
+          " FLOPS"
+        );
+      }
   }
 
       window.onresize = function() {
