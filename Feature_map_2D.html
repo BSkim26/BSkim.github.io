@@ -8,6 +8,25 @@
     <link rel="stylesheet" href="Feature_map_2D/css/font.css" >
     <link type="text/css" rel="stylesheet" href="Feature_map_2D/css/text.css">
     <link type="text/css" rel="stylesheet" href="Feature_map_2D/css/Feature_map_2D.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready (function () {                
+            $('.btnAdd').click (function () {                                        
+                $('.addInput').append (                        
+                    '<input type="number" id="outputNumber" placeholder="Enter a number">\
+                    <button type="button" class="btnRemove">tag삭제하기</button><br>'                    
+                );    // input taf 추가                     
+                $('.btnRemove').on('click', function () { 
+                                                                              // 여기서 this는 '.btnRemove'
+                    $(this).prev().remove();        // .prev()로 input tag를 가리키고 remove()한다.
+                    $(this).next().remove();        // <br> 삭제
+                    $(this).remove();                        // 버튼삭제
+                });
+            });                                      
+        });
+    </script>
 
     <title>CNN Filter->neuron</title>
 
@@ -37,8 +56,12 @@
                                         필터 크기<br>
                                         행 : <input type="number" id="FilterNumber" placeholder="Enter a number">
                                         열 : <input type="number" id="FilterNumber2" placeholder="Enter a number">
+                                        <div class='addInput'>
                                         출력 크기<br>
-                                        크기 : <input type="number" id="outputNumber" placeholder="Enter a number">
+                                        크기 : <input type="number" id="outputNumber"  name="outputNumber" placeholder="Enter a number">
+                                        </div>
+                                        
+                                        <button type='button' class="btnAdd">tag추가하기</button>
                                         <br><button class="btn btn-primary btn-add input-group-prepend" onclick="Boxes_check()">Create Boxes</button>
                                     </span>
 

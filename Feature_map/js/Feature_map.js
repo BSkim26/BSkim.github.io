@@ -14,7 +14,7 @@ function Boxes_check() {
   || document.getElementById("inputNumber2").value >= 5 || document.getElementById("inputNumber2").value <= 0
   || document.getElementById("FilterNumber").value >= 5 || document.getElementById("FilterNumber").value <= 0 
   || document.getElementById("FilterNumber2").value >= 5|| document.getElementById("FilterNumber2").value <= 0
-  || document.getElementById("outputNumber").value >= 5|| document.getElementById("outputNumber").value <= 0) 
+  || $('input[name=outputNumber]').val() >= 5|| $('input[name=outputNumber]').val() <= 0) 
   {
     alert('0, 음수, 5이상은 입력할 수 없습니다.');
   } 
@@ -42,7 +42,7 @@ function createBoxes_1() {
         let inputNumber2 = document.getElementById("inputNumber2").value;
         let FilterNumber = document.getElementById("FilterNumber").value;
         let FilterNumber2 = document.getElementById("FilterNumber2").value;
-        let outputNumber = document.getElementById("outputNumber").value;
+        let outputNumber = $('input[name=outputNumber]').val();
         let boxes = document.getElementById("boxes");
         let boxes2 = document.getElementById("boxes2");
       let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
