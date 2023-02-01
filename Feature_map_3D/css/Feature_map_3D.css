@@ -67,7 +67,7 @@
       button.special1 {
         position: absolute;
         top: 73%;
-        left: 59%;
+        left: 65%;
         background-color: rgb(255, 255, 255);
         color: rgb(0, 0, 0);
         transition: background-color 0.5s ease;
@@ -75,7 +75,7 @@
       button.special2 {
         position: absolute;
         top: 70%;
-        left: 59%;
+        left: 65%;
         background-color: rgb(255, 255, 255);
         color: rgb(0, 0, 0);
         transition: background-color 0.5s ease;
@@ -83,7 +83,7 @@
       button.special3 {
         position: absolute;
         top: 76%;
-        left: 59%;
+        left: 65%;
         background-color: rgb(255, 255, 255);
         color: rgb(0, 0, 0);
         transition: background-color 0.5s ease;
@@ -101,4 +101,7 @@
       }
       .hidden {
         display: none;
+      }
+      canvas {
+        border: 1px solid black;
       }

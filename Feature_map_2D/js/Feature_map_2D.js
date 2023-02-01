@@ -25,6 +25,10 @@ function Boxes_check() {
   {
     alert('필터가 Input Feature map보다 클 수 없습니다.');
   } 
+  else if(((document.getElementById("inputNumber").value+2*document.getElementById("p_Number").value-document.getElementById("FilterNumber").value) % document.getElementById("s_Number").value!=0)||
+          ((document.getElementById("inputNumber2").value+2*document.getElementById("p_Number2").value-document.getElementById("FilterNumber2").value) % document.getElementById("s_Number2").value!=0)){
+    alert('parameter들을 다시 조절해주세요');
+  }
   else {
     createBoxes_1();
   }
@@ -40,15 +44,21 @@ function createBoxes_1() {
 
 
     function createBoxes() {
-        let inputNumber = document.getElementById("inputNumber").value;
-        let inputNumber2 = document.getElementById("inputNumber2").value;
-        let FilterNumber = document.getElementById("FilterNumber").value;
-        let FilterNumber2 = document.getElementById("FilterNumber2").value;
-        let outputNumber = $('input[name=outputNumber]').val();
-        let boxes = document.getElementById("boxes");
-        let boxes2 = document.getElementById("boxes2");
+      let inputNumber = document.getElementById("inputNumber").value;
+      let inputNumber2 = document.getElementById("inputNumber2").value;
+      let p_Number = document.getElementById("p_Number").value;
+      let p_Number2 = document.getElementById("p_Number2").value;
+      let s_Number = document.getElementById("s_Number").value;
+      let s_Number2 = document.getElementById("s_Number2").value;        
+      let FilterNumber = document.getElementById("FilterNumber").value;
+      let FilterNumber2 = document.getElementById("FilterNumber2").value;
+      let outputNumber = $('input[name=outputNumber]').val();
+      let boxes = document.getElementById("boxes");
+      let boxes2 = document.getElementById("boxes2");
       let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     
+      inputNumber=parseInt(inputNumber)+2*parseInt(p_Number);
+      inputNumber2=parseInt(inputNumber2)+2*parseInt(p_Number2);
     // Remove any existing boxes
     while (boxes.firstChild) {
       boxes.removeChild(boxes.firstChild);
@@ -73,8 +83,8 @@ function createBoxes_1() {
     }
 
     // Create Circle
-    for (let i = 0; i < (inputNumber-FilterNumber+1); i++) {
-      for (let j = 0; j < (inputNumber2-FilterNumber2+1); j++) {
+    for (let i = 0; i < (inputNumber-FilterNumber)/parseInt(s_Number)+1; i++) {
+      for (let j = 0; j < (inputNumber2-FilterNumber2)/parseInt(s_Number2)+1; j++) {
         let box = document.createElement("div");
         box.classList.add("box2");
         box.id = "box2_" + i + "_" + j;
@@ -93,11 +103,11 @@ function createBoxes_1() {
 
     let colors = ["red", "blue", "green",  "linen", "orange","lime","coral","cyan","darkgray"];
     // Create and add lines to svg element
-    for(let a = 0; a < inputNumber2-FilterNumber2+1; a++){
-      for(let b = 0; b < inputNumber-FilterNumber+1; b++){
+    for(let a = 0; a < (inputNumber2-FilterNumber2)/parseInt(s_Number2)+1; a++){
+      for(let b = 0; b < (inputNumber-FilterNumber)/parseInt(s_Number)+1; b++){
           for (let i = 0; i < FilterNumber; i++) {
               for (let j = 0; j < FilterNumber2; j++) {
-                  let box = document.getElementById("box_" + (i+b) + "_" + (j+a));
+                  let box = document.getElementById("box_" + (i+parseInt(s_Number)*b) + "_" + (j+parseInt(s_Number2)*a));
                   let box2 = document.getElementById("box2_" + b+"_"+a);
                   var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
                   line.setAttribute("x1", box.offsetLeft + box.offsetWidth/2);
@@ -157,8 +167,8 @@ function createBoxes_1() {
       }
     }
     for(let c = 0; c < outputNumber; c++){
-      for(let d = 0; d < (inputNumber-FilterNumber+1); d++){
-        for(let e = 0; e < (inputNumber2-FilterNumber2+1); e++){
+      for(let d = 0; d < (inputNumber-FilterNumber)/parseInt(s_Number)+1; d++){
+        for(let e = 0; e < (inputNumber2-FilterNumber2)/parseInt(s_Number2)+1; e++){
                   let box2_1 = document.getElementById("box2_" + d+"_"+e);
                   let box3_1 = document.getElementById("box3_" + c);
                   var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
@@ -174,8 +184,8 @@ function createBoxes_1() {
         }
 
         for(let c = 0; c < outputNumber; c++){
-          for(let d = 0; d < (inputNumber-FilterNumber+1); d++){
-            for(let e = 0; e < (inputNumber2-FilterNumber2+1); e++){
+          for(let d = 0; d < (inputNumber-FilterNumber)/parseInt(s_Number)+1; d++){
+            for(let e = 0; e < (inputNumber2-FilterNumber2)/parseInt(s_Number)+1; e++){
                       let box2_1 = document.getElementById("box2_" + d+"_"+e);
                       let box3_1 = document.getElementById("box3_" + c);
                       var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
