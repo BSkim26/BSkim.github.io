@@ -1,4 +1,4 @@
-
+//Copyright (c) 2018 Alexander Lenail
 let nWise = (n, array) => {
     iterators = Array(n).fill().map(() => array[Symbol.iterator]());
     iterators.forEach((it, index) => Array(index).fill().forEach(() => it.next()));

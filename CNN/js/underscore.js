@@ -1,3 +1,8 @@
+//     Underscore.js 1.13.0
+//     https://underscorejs.org
+//     (c) 2009-2021 Jeremy Ashkenas, Julian Gonggrijp, and DocumentCloud and Investigative Reporters & Editors
+//     Underscore may be freely distributed under the MIT license.
+
 ! function(n, r) {
 	"object" == typeof exports && "undefined" != typeof module ? module.exports = r() : "function" == typeof define && define.amd ? define("underscore", r) : (n = "undefined" != typeof globalThis ? globalThis : n || self, function() {
 		var t = n._,
