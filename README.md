@@ -16,7 +16,7 @@
 ### Table of Contents
 - index.html
   - NEW MODEL
-    - Crate the ANN.html
+    - Create the ANN.html
     
           From simple ANNs to MLPs, you can create them by adjusting the number of layers and nodes.
           
@@ -51,12 +51,18 @@
     You can access these features at the following address:
     https://bskim26.github.io/BSkim.github.io
 
+    Upon accessing the website, you will be redirected to the index.html page. 
+    From there, you can click the "New Model" button to create your desired Neural Network. 
+    The first feature is creating Artificial Neural Networks (ANNs). Up to 3000 edges can be configured, and there is no limit to the number of layers. 
+    The second feature is creating Convolutional Neural Networks (CNNs). The structure of CNNs is fixed, and the user can observe specific parts in detail. 
+    By clicking the button under the part you want to see in detail and entering the desired variable value, an appropriate illustration will be automatically generated.
+    
 ### Thanks
     Thanks to the following for making the template and code available:
     Template: https://html5up.net/
     Code: https://github.com/alexlenail/NN-SVG
 
 ### License
-    You are free to use this document. However, warranty is not supported. 
-    If you want to make corrections or include this code in your own project, please contact me at the 
-    following address : kyda0206@gmail.com
+    You are free to use this document. 
+    However, warranty is not supported. 
+    If you want to make corrections or include this code in your own project, please contact me at the following address : kyda0206@gmail.com

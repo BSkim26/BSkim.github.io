@@ -11,7 +11,11 @@
     <link type="text/css" rel="stylesheet" href="Feature_map_3D/css/text.css">
     <link type="text/css" rel="stylesheet" href="Feature_map_3D/css/Feature_map_3D.css">
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
     <title>Feature_map_3D</title>
     <script>
         function createBoxes() {
@@ -32,6 +36,7 @@
         var f_height2 = document.getElementById("FilterNumber2_1").value;
         var f_count2 = document.getElementById("FilterNumber2_2").value;
 
+        var outputNumber = document.getElementById("outputNumber").value;
         let boxes = document.getElementById("boxes");
         var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         while (boxes.firstChild) {
@@ -43,44 +48,171 @@
     box.classList.add("box");
     box.style.width = columns * 40 + "px";
     box.style.height = rows * 40 + "px";
-    box.style.left = ((window.innerWidth / 6) + (5 * j)) + "px";
-    box.style.top = ((window.innerHeight / 2) + (5 * j)) + "px";
+    box.style.left = ((window.innerWidth / 7) + (5 * j)) + "px";
+    box.style.top = ((window.innerHeight / 2- columns * 40/2) + (5 * j)) + "px";
     boxes.appendChild(box);
   }
-
+  if((columns)>=(columns-f_height +1)){
+    if((rows)>=(rows-f_width+1))
   for (let j = 0; j < f_count; j++) {
     var box = document.createElement("div");
     box.classList.add("box");
     box.style.width = (columns-f_height +1) * 40 + "px";
     box.style.height = (rows-f_width+1) * 40 + "px";
-    box.style.left = ((window.innerWidth / 3) + (5 * j)) + "px";
-    box.style.top = ((window.innerHeight / 2) + (5 * j)) + "px";
+    box.style.left = ((window.innerWidth / 3.5) + (5 * j)) + "px";
+    box.style.top = ((window.innerHeight / 2 - (rows-f_width+1) * 40/2) + (5 * j)) + "px";
     boxes.appendChild(box);
   }
-
+}
+  if((columns-f_height +1)>=f_height1){
+    if((rows-f_width+1)>=((rows-f_width+1)-f_width1))
   for (let j = 0; j < f_count1; j++) {
     var box = document.createElement("div");
     box.classList.add("box");
     box.style.width = ((columns-f_height +1)-f_height1 +1) * 40 + "px";
     box.style.height = ((rows-f_width+1)-f_width1+1) * 40 + "px";
-    box.style.left = ((window.innerWidth / 2) + (5 * j)) + "px";
-    box.style.top = ((window.innerHeight / 2) + (5 * j)) + "px";
+    box.style.left = ((window.innerWidth / 2.5) + (5 * j)) + "px";
+    box.style.top = ((window.innerHeight / 2 - ((rows-f_width+1)-f_width1+1)*40/2) + (5 * j)) + "px";
     boxes.appendChild(box);
   }
-
+}
+  if(((columns-f_height +1)-f_height1 +1)>=f_height2){
+    if(((rows-f_width+1)-f_width1+1)>=f_width2)
   for (let j = 0; j < f_count2; j++) {
     var box = document.createElement("div");
     box.classList.add("box");
     box.style.width = (((columns-f_height +1)-f_height1 +1)-f_height2 +1) * 40 + "px";
     box.style.height = (((rows-f_width+1)-f_width1+1)-f_width2+1) * 40 + "px";
-    box.style.left = ((window.innerWidth /1.5) + (5 * j)) + "px";
-    box.style.top = ((window.innerHeight / 2) + (5 * j)) + "px";
+    box.style.left = ((window.innerWidth /2) + (5 * j)) + "px";
+    box.style.top = ((window.innerHeight / 2 - (((rows-f_width+1)-f_width1+1)-f_width2+1) * 40/2) + (5 * j)) + "px";
+    boxes.appendChild(box);
+  }
+  }
+
+  if(((columns-f_height +1)-f_height1 +1)>=f_height2){
+    if(((rows-f_width+1)-f_width1+1)>=f_width2)
+  for (let j = 0; j < (((columns-f_height +1)-f_height1 +1)-f_height2 +1)*(((rows-f_width+1)-f_width1+1)-f_width2+1); j++) {
+    var box = document.createElement("div");
+    box.classList.add("box");
+    box.id = "box_" + j;
+    box.style.borderRadius = "50%";
+    box.style.width = 20 + "px";
+    box.style.height = 20 + "px";
+    box.style.left = (window.innerWidth /1.7) + "px";
+    box.style.top = ((window.innerHeight / 2 - (((columns-f_height +1)-f_height1 +1)-f_height2 +1)*(((rows-f_width+1)-f_width1+1)-f_width2+1)*30/2)) + (30 * j) + "px";
+    boxes.appendChild(box);
+  }
+  }
+
+  for (let j = 0; j < outputNumber; j++) {
+    var box = document.createElement("div");
+    box.classList.add("box");
+    box.id = "box1_" + j;
+    box.style.borderRadius = "50%";
+    box.style.width = 20 + "px";
+    box.style.height = 20 + "px";
+    box.style.left = (window.innerWidth /1.4) + "px";
+    box.style.top = ((window.innerHeight / 2- outputNumber * 30/2) + (30 * j)) + "px";
     boxes.appendChild(box);
   }
 
-        }
+  for (let j = 0; j < outputNumber; j++) {
+    var box = document.createElement("div");
+    box.classList.add("box");
+    box.id = "box2_" + j;
+    box.style.borderRadius = "50%";
+    box.style.width = 20 + "px";
+    box.style.height = 20 + "px";
+    box.style.left = (window.innerWidth /1.2) + "px";
+    box.style.top = ((window.innerHeight / 2- outputNumber * 30/2) + (30 * j)) + "px";
+    boxes.appendChild(box);
+  }
 
-        
+  for(let c = 0; c < outputNumber; c++){
+      for(let d = 0; d < (((columns-f_height +1)-f_height1 +1)-f_height2 +1)*(((rows-f_width+1)-f_width1+1)-f_width2+1); d++){
+                  let box2_1 = document.getElementById("box_" + d);
+                  let box3_1 = document.getElementById("box1_" + c);
+                  var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                  line.setAttribute("x1", box2_1.offsetLeft + box2_1.offsetWidth/2);
+                  line.setAttribute("y1", box2_1.offsetTop + box2_1.offsetHeight/2);
+                  line.setAttribute("x2", box3_1.offsetLeft + box3_1.offsetWidth/2);
+                  line.setAttribute("y2", box3_1.offsetTop + box3_1.offsetHeight/2);
+                  line.style.stroke = "black";
+                  line.style.strokeWidth = "2px";
+                  svg.appendChild(line);
+          }
+        }
+        document.getElementById("svgContainer").appendChild(svg);
+
+
+for(let c = 0; c < outputNumber; c++){
+      for(let d = 0; d < outputNumber; d++){
+                  let box2_1 = document.getElementById("box1_" + d);
+                  let box3_1 = document.getElementById("box2_" + c);
+                  var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                  line.setAttribute("x1", box2_1.offsetLeft + box2_1.offsetWidth/2);
+                  line.setAttribute("y1", box2_1.offsetTop + box2_1.offsetHeight/2);
+                  line.setAttribute("x2", box3_1.offsetLeft + box3_1.offsetWidth/2);
+                  line.setAttribute("y2", box3_1.offsetTop + box3_1.offsetHeight/2);
+                  line.style.stroke = "black";
+                  line.style.strokeWidth = "2px";
+                  svg.appendChild(line);
+          }
+        }
+        document.getElementById("svgContainer").appendChild(svg);
+
+      var buttons = document.querySelectorAll('.hidden');
+      for (var i = 0; i < buttons.length; i++) {
+      buttons[i].classList.remove('hidden');
+  };
+}
+
+
+
+window.onresize = function() {
+    svg = document.querySelector("svg");
+    if (svg) {
+      svg.parentNode.removeChild(svg);
+    }
+    createBoxes();
+}
+const zoomElement = document.querySelector(".container");
+let zoom = 1;
+const ZOOM_SPEED = 0.1;
+const MIN_ZOOM = 0.5;
+const MAX_ZOOM = 1;
+
+document.addEventListener("wheel", function (e) {
+  if (e.deltaY > 0 && zoom < MAX_ZOOM) {
+    zoomElement.style.transform = `scale(${(zoom += ZOOM_SPEED)})`;
+  } else if (e.deltaY < 0 && zoom > MIN_ZOOM) {
+    zoomElement.style.transform = `scale(${(zoom -= ZOOM_SPEED)})`;
+  }
+});
+
+let initialDistance;
+let currentZoom = 1;
+
+zoomElement.addEventListener('touchstart', function (e) {
+  if (e.touches.length === 2) {
+    initialDistance = getDistance(e.touches[0], e.touches[1]);
+  }
+});
+
+zoomElement.addEventListener('touchmove', function (e) {
+  if (e.touches.length === 2) {
+    const currentDistance = getDistance(e.touches[0], e.touches[1]);
+    const zoomDelta = currentDistance / initialDistance;
+    currentZoom = Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, currentZoom * zoomDelta));
+    zoomElement.style.transform = `scale(${currentZoom})`;
+  }
+});
+
+function getDistance(touch1, touch2) {
+  const xDiff = touch1.clientX - touch2.clientX;
+  const yDiff = touch1.clientY - touch2.clientY;
+  return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
+}
       </script>
 </head>
 <body>
@@ -122,8 +254,9 @@
                                         columns : <input type="number" id="FilterNumber2_1" placeholder="Enter a number">
                                         count : <input type="number" id="FilterNumber2_2" placeholder="Enter a number"></input>
 
-                                        <!--노드 개수<br>
+                                        노드 개수<br>
                                         크기 : <input type="number" id="outputNumber"  name="outputNumber" placeholder="Enter a number">
+                                        <!--
                                         크기 : <input type="number" id="outputNumber"  name="outputNumber" placeholder="Enter a number">
                                         크기 : <input type="number" id="outputNumber"  name="outputNumber" placeholder="Enter a number">
                                         크기 : <input type="number" id="outputNumber"  name="outputNumber" placeholder="Enter a number">
@@ -150,12 +283,17 @@
     <div class="container" draggable="true">
 
     <div id="boxes"></div>
-
-</div>
-
-
+    <div id="svgContainer"></div>
+    <button class="special hidden" onclick="location.href='Feature_map_2D.html'">Feature_map_2D</button>
+    <button class="special1 hidden" onclick="location.href='Flat_View.html'">Flat_View</button>
+    <button class="special2 hidden" onclick="location.href='2D_to_1D.html'">Flatten</button>
+    <button class="special3 hidden" onclick="location.href='Feature_map.html'">Flatten_Circle</button>
+    <button class="special4 hidden" onclick="location.href='ANN.html'">MLP</button>
+    </div>
       
       <div id="count"><span></span></div>
+      </a>
+
 
 </body>
 

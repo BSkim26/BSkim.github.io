@@ -187,8 +187,8 @@ function createBoxes_1() {
                       line.style.strokeWidth = "2px";
                       svg.appendChild(line);
             }
-              }
-            }
+          }
+        }
 
         
     // Add svg element to body
