@@ -32,12 +32,12 @@
       float:left;
       }
       .box2 {
+        position : absolute;
         width: 50px;
         height: 50px;
         margin: 5px;
         background-color: white;
         border: 3px solid black;
-        float:left;
       }
       .box3 {
         width: 50px;
@@ -97,6 +97,18 @@
         transition: background-color 0.5s ease;
       }
       button.special:hover {
+        background-color: rgb(174, 225, 255);
+      }
+      button.special1:hover {
+        background-color: rgb(174, 225, 255);
+      }
+      button.special2:hover {
+        background-color: rgb(174, 225, 255);
+      }
+      button.special3:hover {
+        background-color: rgb(174, 225, 255);
+      }
+      button.special4:hover {
         background-color: rgb(174, 225, 255);
       }
       .hidden {

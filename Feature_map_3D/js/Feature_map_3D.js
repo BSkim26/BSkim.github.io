@@ -26,8 +26,13 @@ var f_count2 = document.getElementById("FilterNumber2_2").value;
 
 var outputNumber = document.getElementById("outputNumber").value;
 var outputNumber1 = document.getElementById("outputNumber1").value;
-
+var k=[];
+k[0]=0;
+k[1]=0;
+k[2]=0;
+k[3]=0;
 let boxes = document.getElementById("boxes");
+
 
 var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
 // 함수가 재실행되면 앞서 만들었던 요소들을 없애줌
@@ -37,18 +42,32 @@ boxes.removeChild(boxes.firstChild);
 
 // 네모
 for (let j = 0; j < depths; j++) {
+  k[0]+=1;
+  var box = document.createElement("div");
+  box.classList.add("box");
+  box.id = "FM0_" + j;
+  box.style.width = columns * 40 + "px";
+  box.style.height = rows * 40 + "px";
+  box.style.left = ((window.innerWidth / 7) + (5 * j)) + "px";
+  box.style.top = ((window.innerHeight / 2- columns * 40/2) + (5 * j)) + "px";
+  boxes.appendChild(box);
+
+}
+
 var box = document.createElement("div");
 box.classList.add("box");
-box.id = "FM0_" + j;
-box.style.width = columns * 40 + "px";
-box.style.height = rows * 40 + "px";
-box.style.left = ((window.innerWidth / 7) + (5 * j)) + "px";
-box.style.top = ((window.innerHeight / 2- columns * 40/2) + (5 * j)) + "px";
+box.id = "FM0_" + k[0];
+box.style.width = columns * 5 + "px";
+box.style.height = rows * 5 + "px";
+box.style.left = ((window.innerWidth / 7) + (5 * (k[0]+1))) + "px";
+box.style.top = ((window.innerHeight / 2- columns * 40/2) + (5 * (k[0]+1))) + "px";
+box.style.stroke = "red";
 boxes.appendChild(box);
-}
+
 if((columns)>=(columns-f_height +1)){
 if((rows)>=(rows-f_width+1))
 for (let j = 0; j < f_count; j++) {
+  k[1]+=1;
 var box = document.createElement("div");
 box.classList.add("box");
 box.id = "FM1_" + j;
@@ -57,11 +76,24 @@ box.style.height = (rows-f_width+1) * 40 + "px";
 box.style.left = ((window.innerWidth / 3.5) + (5 * j)) + "px";
 box.style.top = ((window.innerHeight / 2 - (rows-f_width+1) * 40/2) + (5 * j)) + "px";
 boxes.appendChild(box);
+
 }
 }
+
+var box = document.createElement("div");
+box.classList.add("box");
+box.id = "FM1_" + k[1];
+box.style.width = (columns-f_height +1) * 5 + "px";
+box.style.height = (rows-f_width+1) * 5 + "px";
+box.style.left = ((window.innerWidth / 3.5) + (5 * (k[1]+1))) + "px";
+box.style.top = ((window.innerHeight / 2 - (rows-f_width+1) * 40/2) + (5 * (k[1]+1))) + "px";
+box.style.stroke = "red";
+boxes.appendChild(box);
+
 if((columns-f_height +1)>=f_height1){
 if((rows-f_width+1)>=((rows-f_width+1)-f_width1))
 for (let j = 0; j < f_count1; j++) {
+  k[2]+=1;
 var box = document.createElement("div");
 box.classList.add("box");
 box.id = "FM2_" + j;
@@ -70,11 +102,24 @@ box.style.height = ((rows-f_width+1)-f_width1+1) * 40 + "px";
 box.style.left = ((window.innerWidth / 2.4) + (5 * j)) + "px";
 box.style.top = ((window.innerHeight / 2 - ((rows-f_width+1)-f_width1+1)*40/2) + (5 * j)) + "px";
 boxes.appendChild(box);
+
 }
 }
+
+var box = document.createElement("div");
+box.classList.add("box");
+box.id = "FM2_" + k[2];
+box.style.width = ((columns-f_height +1)-f_height1 +1) * 5 + "px";
+box.style.height = ((rows-f_width+1)-f_width1+1) * 5 + "px";
+box.style.left = ((window.innerWidth / 2.4) + (5 * (k[2]+1))) + "px";
+box.style.top = ((window.innerHeight / 2 - ((rows-f_width+1)-f_width1+1)*40/2) + (5 * (k[2]+1))) + "px";
+box.style.stroke = "red";
+boxes.appendChild(box);
+
 if(((columns-f_height +1)-f_height1 +1)>=f_height2){
 if(((rows-f_width+1)-f_width1+1)>=f_width2)
 for (let j = 0; j < f_count2; j++) {
+  k[3]+=1;
 var box = document.createElement("div");
 box.classList.add("box");
 box.id = "FM3_" + j;
@@ -86,6 +131,15 @@ boxes.appendChild(box);
 }
 }
 
+var box = document.createElement("div");
+box.classList.add("box");
+box.id = "FM3_" + k[3];
+box.style.width = (((columns-f_height +1)-f_height1 +1)-f_height2 +1) * 5 + "px";
+box.style.height = (((rows-f_width+1)-f_width1+1)-f_width2+1) * 5 + "px";
+box.style.left = ((window.innerWidth /1.8) + (5 * (k[3]+1))) + "px";
+box.style.top = ((window.innerHeight / 2 - (((rows-f_width+1)-f_width1+1)-f_width2+1) * 40/2) + (5 * (k[3]+1))) + "px";
+box.style.stroke = "red";
+boxes.appendChild(box);
 //원
 
 if(((columns-f_height +1)-f_height1 +1)>=f_height2){
@@ -156,48 +210,52 @@ for(let d = 0; d < outputNumber; d++){
           line.style.strokeWidth = "2px";
           svg.appendChild(line);
   }
+
 }
-document.getElementById("svgContainer").appendChild(svg);
+for(let d = 0; d < 3; d++){
+  let c=d+1;
+let box2_1 = document.getElementById("FM" + d+"_"+k[d]);
+let box3_1 = document.getElementById("FM" + c+"_"+k[c]);
+var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+line.setAttribute("x1", box2_1.offsetLeft + box2_1.offsetWidth);
+line.setAttribute("y1", box2_1.offsetTop );
+line.setAttribute("x2", box3_1.offsetLeft);
+line.setAttribute("y2", box3_1.offsetTop);
+line.style.stroke = "red";
+line.style.strokeWidth = "1px";
+svg.appendChild(line);
+}
+for(let d = 0; d < 3; d++){
+  let c=d+1;
+let box2_1 = document.getElementById("FM" + d+"_"+k[d]);
+let box3_1 = document.getElementById("FM" + c+"_"+k[c]);
+var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+line.setAttribute("x1", box2_1.offsetLeft + box2_1.offsetWidth);
+line.setAttribute("y1", box2_1.offsetTop + box2_1.offsetHeight);
+line.setAttribute("x2", box3_1.offsetLeft);
+line.setAttribute("y2", box3_1.offsetTop + box3_1.offsetHeight);
+line.style.stroke = "red";
+line.style.strokeWidth = "1px";
+svg.appendChild(line);
+}
 
-// 화살표
-for (var i = 0; i < 4; i++) {
-    var box2 = document.getElementById("FM" + i + "_" + 0);
-    var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-    line.setAttribute("x1", box2.offsetLeft + 210);
-    line.setAttribute("y1", box2.offsetTop + 100);
-    line.setAttribute("x2", box2.offsetLeft + 240);
-    line.setAttribute("y2", box2.offsetTop + 100);
-    line.style.stroke = "black";
-    line.style.strokeWidth = "2px";
-    svg.appendChild(line);
-  }
 
-  for (var i = 0; i < 4; i++) {
-    var box2 = document.getElementById("FM" + i + "_" + 0);
-    var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-  line.setAttribute("x1", box2.offsetLeft + 230);
-  line.setAttribute("y1", box2.offsetTop + 80);
-  line.setAttribute("x2", box2.offsetLeft + 250);
-  line.setAttribute("y2", box2.offsetTop + 100);
-  line.style.stroke = "black";
-  line.style.strokeWidth = "2px";
-  svg.appendChild(line);
-  }
 
-  for (var i = 0; i < 4; i++) {
-    var box2 = document.getElementById("FM" + i + "_" + 0);
-    var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-  line.setAttribute("x1", box2.offsetLeft + 230);
-  line.setAttribute("y1", box2.offsetTop + 120);
-  line.setAttribute("x2", box2.offsetLeft + 250);
-  line.setAttribute("y2", box2.offsetTop + 100);
-  line.style.stroke = "black";
-  line.style.strokeWidth = "2px";
-  svg.appendChild(line);
-  }
+  for(let d = 0; d < (((columns-f_height +1)-f_height1 +1)-f_height2 +1)*(((rows-f_width+1)-f_width1+1)-f_width2+1)*f_count2; d++){
+            let box2_1 = document.getElementById("FM3_"+k[3]);
+            let box3_1 = document.getElementById("box_" + d);
+            var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+            line.setAttribute("x1", box2_1.offsetLeft + box2_1.offsetWidth/2);
+            line.setAttribute("y1", box2_1.offsetTop + box2_1.offsetHeight/2);
+            line.setAttribute("x2", box3_1.offsetLeft + box3_1.offsetWidth/2);
+            line.setAttribute("y2", box3_1.offsetTop + box3_1.offsetHeight/2);
+            line.style.stroke = "red";
+            line.style.strokeWidth = "1px";
+            svg.appendChild(line);
+    }
 
-document.getElementById("svgContainer").appendChild(svg);
-
+  document.getElementById("svgContainer").appendChild(svg);
+  
 // hidden이 붙어있는 버튼 찾아서 hidden 없애기
 var buttons = document.querySelectorAll('.hidden');
 for (var i = 0; i < buttons.length; i++) {
