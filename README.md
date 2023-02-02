@@ -7,6 +7,7 @@
   - [Table of Contents](#table-of-contents-1)
   - [Install](#install)
   - [Usage](#usage)
+  - [Update](#update)
   - [Thanks](#thanks)
   - [License](#license)
 
@@ -71,10 +72,15 @@
 
     Upon accessing the website, you will be redirected to the index.html page. 
     From there, you can click the "New Model" button to create your desired Neural Network. 
-    The first feature is creating Artificial Neural Networks (ANNs). Up to 3000 edges can be configured, and there is no limit to the number of layers. 
-    The second feature is creating Convolutional Neural Networks (CNNs). The structure of CNNs is fixed, and the user can observe specific parts in detail. 
+    The first feature is creating Artificial Neural Networks (ANNs). 
+    Up to 3000 edges can be configured, and there is no limit to the number of layers. 
+    The second feature is creating Convolutional Neural Networks (CNNs). 
+    The structure of CNNs is fixed, and the user can observe specific parts in detail. 
     By clicking the button under the part you want to see in detail and entering the desired variable value, an appropriate illustration will be automatically generated.
     
+### Update
+    Continuous updates are scheduled until February 10, 2023, and there are no plans for updates after that.
+
 ### Thanks
     Thanks to the following for making the template and code available:
     Template: https://html5up.net/
