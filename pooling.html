@@ -1,0 +1,114 @@
+<!--Copyright 2023 Kim Bumsoo-->
+
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="pooling/css/bootstrap.min.css">                <!--온라인 소스 가져오지 않도록 수정-->
+    <link rel="stylesheet" href="pooling/css/font.css" >
+    <link type="text/css" rel="stylesheet" href="pooling/css/text.css">
+    <link type="text/css" rel="stylesheet" href="pooling/css/pooling.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready (function () {                
+            $('.btnAdd').click (function () {                                        
+                $('.addInput').append (                        
+                    '<input type="number" id="outputNumber" placeholder="Enter a number">\
+                    <button type="button" class="btnRemove">tag삭제하기</button><br>'                    
+                );    // input taf 추가                     
+                $('.btnRemove').on('click', function () { 
+                                                                              // 여기서 this는 '.btnRemove'
+                    $(this).prev().remove();        // .prev()로 input tag를 가리키고 remove()한다.
+                    $(this).next().remove();        // <br> 삭제
+                    $(this).remove();                        // 버튼삭제
+                });
+            });                                      
+        });
+    </script>
+
+    <title>pooling</title>
+
+</head>
+<body>
+ 
+    <div class="container-fluid">
+        <div class="row">
+            <div class="nn-picker">
+                <div class="card">
+                    <div class="card-header">
+                        <button class="btn btn-secondary btn-remove input-group-prepend pull-right" data-toggle="collapse" href="#collapsable" onclick="createBoxes_time()">Open/Fold</button>
+                        <button class="btn btn-secondary btn-remove input-group-prepend" onclick="location.href='index.html'" >Back Main</button>
+                    </div>
+                    <div class="tab-content collapse show" id="collapsable">
+                        <div class="tab-pane fade show active" id="FCNN" role="tabpanel">
+                            <h4>pooling</h4>
+
+                            <hr>
+                            <div id="architecture">
+
+                                <div class="row entry">
+                                    <span class="input-group mb-2 mr-sm-2 col-4">
+                                        배열 크기<br>
+                                        행 : <input type="number" id="inputNumber" placeholder="Enter a number">
+                                        열 : <input type="number" id="inputNumber2" placeholder="Enter a number">
+                                        Stride<br>
+                                        행 : <input type="number" id="s_Number" placeholder="Enter a number">
+                                        열 : <input type="number" id="s_Number2" placeholder="Enter a number">
+                                        Pooling<br>
+                                        행 : <input type="number" id="FilterNumber" placeholder="Enter a number">
+                                        열 : <input type="number" id="FilterNumber2" placeholder="Enter a number">
+                                        <div class='addInput'>
+                                        출력 크기<br>
+                                        크기 : <input type="number" id="outputNumber"  name="outputNumber" placeholder="Enter a number" value="0">
+                                        </div>
+                                        
+                                       <!--<button type='button' class="btnAdd">tag추가하기</button>--> 
+                                        <br><button class="btn btn-primary btn-add input-group-prepend" onclick="Boxes_check()">Create</button>
+                                    </span>
+
+                                    </div>
+                                </div>
+                                
+                                </div>
+
+                            </div>
+
+                            <hr>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+      <div class="container" draggable="true">
+        <div id="box"></div>
+        <div id="box1"></div>
+        <div id="boxes"></div>
+        <div id="boxes2"></div>
+        <div id="boxes3"></div>
+        <div id="svgContainer"></div>
+
+      </div>
+
+      
+      <div id="count"><span></span></div>
+
+</body>
+
+<script type="text/javascript" src="pooling/js/jquery-3.2.1.slim.min.js" ></script>
+<script type="text/javascript" src="pooling/js/popper.min.js"></script>
+<script type="text/javascript" src="pooling/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="pooling/js/d3.v5.min.js"></script>
+<script type="text/javascript" src="pooling/js/util.js"></script>
+<script type="text/javascript" src="pooling/js/pooling.js" ></script>
+
+</html>
