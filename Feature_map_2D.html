@@ -13,24 +13,8 @@
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 
-    <script type="text/javascript">
-        $(document).ready (function () {                
-            $('.btnAdd').click (function () {                                        
-                $('.addInput').append (                        
-                    '<input type="number" id="outputNumber" placeholder="Enter a number">\
-                    <button type="button" class="btnRemove">tag삭제하기</button><br>'                    
-                );    // input taf 추가                     
-                $('.btnRemove').on('click', function () { 
-                                                                              // 여기서 this는 '.btnRemove'
-                    $(this).prev().remove();        // .prev()로 input tag를 가리키고 remove()한다.
-                    $(this).next().remove();        // <br> 삭제
-                    $(this).remove();                        // 버튼삭제
-                });
-            });                                      
-        });
-    </script>
 
-    <title>Feature_map_2D</title>
+    <title>Convolution</title>
 
 </head>
 <body>
@@ -45,7 +29,7 @@
                     </div>
                     <div class="tab-content collapse show" id="collapsable">
                         <div class="tab-pane fade show active" id="FCNN" role="tabpanel">
-                            <h4>Feature_map_2D</h4>
+                            <h4>Convolution</h4>
 
                             <hr>
                             <div id="architecture">
@@ -69,7 +53,7 @@
                                         크기 : <input type="number" id="outputNumber"  name="outputNumber" placeholder="Enter a number" value="0">
                                         </div>
                                         
-                                       <!--<button type='button' class="btnAdd">tag추가하기</button>--> 
+                                       
                                         <br><button class="btn btn-primary btn-add input-group-prepend" onclick="Boxes_check()">Create</button>
                                     </span>
 

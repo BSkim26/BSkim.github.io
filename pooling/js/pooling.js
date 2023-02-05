@@ -212,34 +212,6 @@ function createBoxes_1() {
         
     // Add svg element to body
      document.getElementById("svgContainer").appendChild(svg);
-
-     //count parameter
-     if(outputNumber!=0){
-      $('#count span:first').html(
-        (inputNumber * inputNumber2) + ((inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1)) + parseInt(outputNumber)+
-        " nodes <br>" + 
-        (FilterNumber * FilterNumber2 * (inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1) + 
-        (inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1) * parseInt(outputNumber)) + 
-        " edges <br>" + 
-        (FilterNumber * FilterNumber2 + 1+(inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1)*(parseInt(outputNumber))+1) + 
-        " parameters <br>" +
-        (FilterNumber * FilterNumber2 *(inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1))+
-          "FLOPS"
-    );
-      }
-      else{
-        $('#count span:first').html(
-          (inputNumber * inputNumber2) + ((inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1)) + parseInt(outputNumber)+
-          " nodes <br>" + 
-          (FilterNumber * FilterNumber2 * (inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1) + 
-           (inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1) * parseInt(outputNumber)) + 
-          " edges <br>" + 
-          (FilterNumber * FilterNumber2 + 1+(inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1)*(parseInt(outputNumber))) + 
-          " parameters <br>"+
-          (FilterNumber * FilterNumber2 *(inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1))+
-          " FLOPS"
-        );
-      }
   }
 
       window.onresize = function() {

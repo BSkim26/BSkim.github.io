@@ -5,13 +5,29 @@
     
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <link rel="stylesheet" href="Feature_map_3D/css/bootstrap.min.css">                <!--온라인 소스 가져오지 않도록 수정-->
     <link rel="stylesheet" href="Feature_map_3D/css/font.css" >
     <link type="text/css" rel="stylesheet" href="Feature_map_3D/css/text.css">
     <link type="text/css" rel="stylesheet" href="Feature_map_3D/css/Feature_map_3D.css">
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
+    <script type="text/javascript">
+        $(document).ready (function () {                
+            $('.btnAdd').click (function () {                                        
+                $('.addInput').append (                        
+                    '<input type="number" id="outputNumber" placeholder="Enter a number">\
+                    <button type="button" class="btnRemove">tag삭제하기</button><br>'                    
+                );    // input taf 추가                     
+                $('.btnRemove').on('click', function () { 
+                                                                              // 여기서 this는 '.btnRemove'
+                    $(this).prev().remove();        // .prev()로 input tag를 가리키고 remove()한다.
+                    $(this).next().remove();        // <br> 삭제
+                    $(this).remove();                        // 버튼삭제
+                });
+            });                                      
+        });
+        </script>
     <title>CNN</title>
 
 </head>
@@ -31,46 +47,69 @@
 
                             <hr>
                             <div id="architecture">
-
+                                <div class="row entry">
+                                    <span class="input-group mb-2 mr-sm-2 col-4">
+                                <button class="btn btn-primary input-group-prepend" onclick="createBoxes_1()">Create</button>
+                                
+                                </span>
+                            </div>
                                 <div class="row entry">
                                     <span class="input-group mb-2 mr-sm-2 col-4">
                                         배열 크기<br>
                                         rows : <input type="number" id="inputNumber0" placeholder="Enter a number"></input>
                                         columns : <input type="number" id="inputNumber1" placeholder="Enter a number"></input>
-                                        depths : <input type="number" id="inputNumber2" placeholder="Enter a number"></input>
+                                        channel : <input type="number" id="inputNumber2" placeholder="Enter a number"></input>
+                                        </span>
+                                    </div>
+                                    <div class="row entry">
+                                        <span class="input-group mb-2 mr-sm-2 col-4">
+                                            노드 개수<br>
+                                            크기 : <input type="number" id="outputNumber"  name="outputNumber" placeholder="Enter a number"></input>
+                                        </span>
+                                    </div>
+                                    <div class="row entry">
+                                        <span class="input-group mb-2 mr-sm-2 col-4">
+                                            노드 개수<br>
+                                            크기 : <input type="number" id="outputNumber1"  name="outputNumber1" placeholder="Enter a number"></input>
 
+                                        </span>
+                                    </div>
+                                    <div class="row entry">
+                                        <span class="input-group mb-2 mr-sm-2 col-4">
+                                            <button class="btn btn-primary btn-add input-group-prepend">필터 추가</button>
+                                            </span>
+                                            </div>
+                                    <div id="filter-container">
+                                        <div class="row entry">
+                                            <span class="input-group mb-2 mr-sm-2 col-4">
                                         필터 크기<br>
                                         rows : <input type="number" id="FilterNumber0" placeholder="Enter a number"></input>
                                         columns : <input type="number" id="FilterNumber1" placeholder="Enter a number"></input>
                                         count : <input type="number" id="FilterNumber2" placeholder="Enter a number"></input>
-
+                                        
+                                    </span>
+                                    </div>
+                                    </div>
+                                    <!--<div class="row entry">
+                                        <span class="input-group mb-2 mr-sm-2 col-4">
                                         필터 크기<br>
                                         rows : <input type="number" id="FilterNumber1_0" placeholder="Enter a number"></input>
                                         columns : <input type="number" id="FilterNumber1_1" placeholder="Enter a number"></input>
                                         count : <input type="number" id="FilterNumber1_2" placeholder="Enter a number"></input>
-
+                                    </span>
+                                </div>
+                                <div class="row entry">
+                                    <span class="input-group mb-2 mr-sm-2 col-4">
                                         필터 크기<br>
                                         rows : <input type="number" id="FilterNumber2_0" placeholder="Enter a number"></input>
                                         columns : <input type="number" id="FilterNumber2_1" placeholder="Enter a number"></input>
                                         count : <input type="number" id="FilterNumber2_2" placeholder="Enter a number"></input>
-
-                                        노드 개수<br>
-                                        크기 : <input type="number" id="outputNumber"  name="outputNumber" placeholder="Enter a number"></input>
-                                        
-                                        노드 개수<br>
-                                        크기 : <input type="number" id="outputNumber1"  name="outputNumber1" placeholder="Enter a number"></input>
-                                        <!--
-                                        크기 : <input type="number" id="outputNumber"  name="outputNumber" placeholder="Enter a number">
-                                        크기 : <input type="number" id="outputNumber"  name="outputNumber" placeholder="Enter a number">
-                                        크기 : <input type="number" id="outputNumber"  name="outputNumber" placeholder="Enter a number">
-                                        -->
-                                        <br><button class="btn btn-primary btn-add input-group-prepend" onclick="createBoxes_1()">Create</button>
                                     </span>
+                                </div>
+                            -->
 
-                                    </div>
-                                </div>
-                                
-                                </div>
+
+
 
                             </div>
 
@@ -87,7 +126,9 @@
 
     <div id="boxes"></div>
     <div id="svgContainer"></div>
-    <button class="special hidden" onclick="location.href='Feature_map_2D.html'">Feature_map_2D</button>
+    <button class="special hidden" onclick="location.href='Feature_map_2D.html'">Convolution</button>
+    <button class="special_1 hidden" onclick="location.href='Pooling.html'">Max_Pooling</button>
+    <button class="special_2 hidden" onclick="location.href='Average_pooling.html'">Average_pooling</button>
     <button class="special1 hidden" onclick="location.href='Flat_View.html'">Flat_View</button>
     <button class="special2 hidden" onclick="location.href='2D_to_1D.html'">Flatten</button>
     <button class="special3 hidden" onclick="location.href='Feature_map.html'">Flatten_Circle</button>

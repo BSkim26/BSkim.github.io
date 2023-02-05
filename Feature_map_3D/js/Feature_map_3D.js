@@ -46,10 +46,10 @@ for (let j = 0; j < depths; j++) {
   var box = document.createElement("div");
   box.classList.add("box");
   box.id = "FM0_" + j;
-  box.style.width = columns * 40 + "px";
-  box.style.height = rows * 40 + "px";
+  box.style.width = columns * 20 + "px";
+  box.style.height = rows * 20 + "px";
   box.style.left = ((window.innerWidth / 7) + (5 * j)) + "px";
-  box.style.top = ((window.innerHeight / 2- columns * 40/2) + (5 * j)) + "px";
+  box.style.top = ((window.innerHeight / 2- columns * 20/2) + (5 * j)) + "px";
   boxes.appendChild(box);
 
 }
@@ -60,7 +60,7 @@ box.id = "FM0_" + k[0];
 box.style.width = columns * 5 + "px";
 box.style.height = rows * 5 + "px";
 box.style.left = ((window.innerWidth / 7) + (5 * (k[0]+1))) + "px";
-box.style.top = ((window.innerHeight / 2- columns * 40/2) + (5 * (k[0]+1))) + "px";
+box.style.top = ((window.innerHeight / 2- columns * 20/2) + (5 * (k[0]+1))) + "px";
 box.style.stroke = "red";
 boxes.appendChild(box);
 
@@ -71,10 +71,10 @@ for (let j = 0; j < f_count; j++) {
 var box = document.createElement("div");
 box.classList.add("box");
 box.id = "FM1_" + j;
-box.style.width = (columns-f_height +1) * 40 + "px";
-box.style.height = (rows-f_width+1) * 40 + "px";
+box.style.width = (columns-f_height +1) * 20 + "px";
+box.style.height = (rows-f_width+1) * 20 + "px";
 box.style.left = ((window.innerWidth / 3.5) + (5 * j)) + "px";
-box.style.top = ((window.innerHeight / 2 - (rows-f_width+1) * 40/2) + (5 * j)) + "px";
+box.style.top = ((window.innerHeight / 2 - (rows-f_width+1) * 20/2) + (5 * j)) + "px";
 boxes.appendChild(box);
 
 }
@@ -86,7 +86,7 @@ box.id = "FM1_" + k[1];
 box.style.width = (columns-f_height +1) * 5 + "px";
 box.style.height = (rows-f_width+1) * 5 + "px";
 box.style.left = ((window.innerWidth / 3.5) + (5 * (k[1]+1))) + "px";
-box.style.top = ((window.innerHeight / 2 - (rows-f_width+1) * 40/2) + (5 * (k[1]+1))) + "px";
+box.style.top = ((window.innerHeight / 2 - (rows-f_width+1) * 20/2) + (5 * (k[1]+1))) + "px";
 box.style.stroke = "red";
 boxes.appendChild(box);
 
@@ -97,10 +97,10 @@ for (let j = 0; j < f_count1; j++) {
 var box = document.createElement("div");
 box.classList.add("box");
 box.id = "FM2_" + j;
-box.style.width = ((columns-f_height +1)-f_height1 +1) * 40 + "px";
-box.style.height = ((rows-f_width+1)-f_width1+1) * 40 + "px";
+box.style.width = ((columns-f_height +1)-f_height1 +1) * 20 + "px";
+box.style.height = ((rows-f_width+1)-f_width1+1) * 20 + "px";
 box.style.left = ((window.innerWidth / 2.4) + (5 * j)) + "px";
-box.style.top = ((window.innerHeight / 2 - ((rows-f_width+1)-f_width1+1)*40/2) + (5 * j)) + "px";
+box.style.top = ((window.innerHeight / 2 - ((rows-f_width+1)-f_width1+1)*20/2) + (5 * j)) + "px";
 boxes.appendChild(box);
 
 }
@@ -112,7 +112,7 @@ box.id = "FM2_" + k[2];
 box.style.width = ((columns-f_height +1)-f_height1 +1) * 5 + "px";
 box.style.height = ((rows-f_width+1)-f_width1+1) * 5 + "px";
 box.style.left = ((window.innerWidth / 2.4) + (5 * (k[2]+1))) + "px";
-box.style.top = ((window.innerHeight / 2 - ((rows-f_width+1)-f_width1+1)*40/2) + (5 * (k[2]+1))) + "px";
+box.style.top = ((window.innerHeight / 2 - ((rows-f_width+1)-f_width1+1)*20/2) + (5 * (k[2]+1))) + "px";
 box.style.stroke = "red";
 boxes.appendChild(box);
 
@@ -123,10 +123,10 @@ for (let j = 0; j < f_count2; j++) {
 var box = document.createElement("div");
 box.classList.add("box");
 box.id = "FM3_" + j;
-box.style.width = (((columns-f_height +1)-f_height1 +1)-f_height2 +1) * 40 + "px";
-box.style.height = (((rows-f_width+1)-f_width1+1)-f_width2+1) * 40 + "px";
+box.style.width = (((columns-f_height +1)-f_height1 +1)-f_height2 +1) * 20 + "px";
+box.style.height = (((rows-f_width+1)-f_width1+1)-f_width2+1) * 20 + "px";
 box.style.left = ((window.innerWidth /1.8) + (5 * j)) + "px";
-box.style.top = ((window.innerHeight / 2 - (((rows-f_width+1)-f_width1+1)-f_width2+1) * 40/2) + (5 * j)) + "px";
+box.style.top = ((window.innerHeight / 2 - (((rows-f_width+1)-f_width1+1)-f_width2+1) * 20/2) + (5 * j)) + "px";
 boxes.appendChild(box);
 }
 }
@@ -137,7 +137,7 @@ box.id = "FM3_" + k[3];
 box.style.width = (((columns-f_height +1)-f_height1 +1)-f_height2 +1) * 5 + "px";
 box.style.height = (((rows-f_width+1)-f_width1+1)-f_width2+1) * 5 + "px";
 box.style.left = ((window.innerWidth /1.8) + (5 * (k[3]+1))) + "px";
-box.style.top = ((window.innerHeight / 2 - (((rows-f_width+1)-f_width1+1)-f_width2+1) * 40/2) + (5 * (k[3]+1))) + "px";
+box.style.top = ((window.innerHeight / 2 - (((rows-f_width+1)-f_width1+1)-f_width2+1) * 20/2) + (5 * (k[3]+1))) + "px";
 box.style.stroke = "red";
 boxes.appendChild(box);
 //원
@@ -242,7 +242,7 @@ svg.appendChild(line);
 
 
   for(let d = 0; d < (((columns-f_height +1)-f_height1 +1)-f_height2 +1)*(((rows-f_width+1)-f_width1+1)-f_width2+1)*f_count2; d++){
-            let box2_1 = document.getElementById("FM3_"+k[3]);
+            let box2_1 = document.getElementById("FM3_"+0);
             let box3_1 = document.getElementById("box_" + d);
             var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
             line.setAttribute("x1", box2_1.offsetLeft + box2_1.offsetWidth/2);
@@ -309,3 +309,49 @@ const xDiff = touch1.clientX - touch2.clientX;
 const yDiff = touch1.clientY - touch2.clientY;
 return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
 }
+
+const filterContainer = document.getElementById("filter-container");
+const addButton = filterContainer.querySelector(".btn-add");
+let counter0 = 1;
+let counter1 = 1;
+let counter2 = 1;
+
+const btnAdd = document.querySelector(".btn-add");
+let counter = 0;
+
+$(document).ready(function() {
+  var index = 1;
+  $("#architecture").on("click", ".btn-add", function() {
+    var inputGroup = `
+    <div class="row entry">
+    <span class="input-group mb-2 mr-sm-2 col-4">
+        필터 크기<br>
+        rows : <input type="number" id="FilterNumber${index}_0" placeholder="Enter a number"></input>
+        columns : <input type="number" id="FilterNumber${index}_1" placeholder="Enter a number"></input>
+        count : <input type="number" id="FilterNumber${index}_2" placeholder="Enter a number"></input>
+    </span>
+    `;
+    $("#architecture").append(inputGroup);
+    index++;
+  });
+});
+
+
+
+$(document).on('click', '.btn-remove', function(e) {
+  e.preventDefault();
+
+  $(this).parents('.entry:first').remove();
+
+  restart();
+
+  return false;
+
+});
+
+var body = document.body;
+
+
+var architecture = document.getElementById("architecture");
+architecture.style.height = body.offsetHeight*8/10 + "px";
+architecture.style.overflow = "scroll";

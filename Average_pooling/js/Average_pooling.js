@@ -39,6 +39,14 @@ function createBoxes_1() {
     if (svg) {
       svg.parentNode.removeChild(svg);
     }
+    const box = document.getElementById("box1");
+    while (box.firstChild) {
+    box.removeChild(box.firstChild);
+    }
+    const box1 = document.getElementById("box1");
+    while (box1.firstChild) {
+    box1.removeChild(box1.firstChild);
+    } 
     createBoxes();
     }
 
@@ -102,11 +110,18 @@ function createBoxes_1() {
   }
 
     let colors = ["red", "blue", "green",  "linen", "orange","lime","coral","cyan","darkgray"];
+    let u=0;
+    let w=0;
     // Create and add lines to svg element
-    for(let a = 0; a < (inputNumber2-FilterNumber2)/parseInt(s_Number2)+1; a++){
+
       for(let b = 0; b < (inputNumber-FilterNumber)/parseInt(s_Number)+1; b++){
+        
+        w+=1;
+        for(let a = 0; a < (inputNumber2-FilterNumber2)/parseInt(s_Number2)+1; a++){
+          u=0;
           for (let i = 0; i < FilterNumber; i++) {
               for (let j = 0; j < FilterNumber2; j++) {
+                  
                   let box = document.getElementById("box_" + (i+parseInt(s_Number)*b) + "_" + (j+parseInt(s_Number2)*a));
                   let box2 = document.getElementById("box2_" + b+"_"+a);
                   var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
@@ -119,22 +134,25 @@ function createBoxes_1() {
                   svg.appendChild(line);
 
                   const text = document.createElement("div");
-                  text.innerHTML = "A"+a+"_"+b;
+                  text.innerHTML = "A"+(b*inputNumber/FilterNumber+parseInt(a))+"_"+u;
+                  text.style.fontSize = "2px"; 
                   text.style.position = "absolute";
                   text.style.left = box.offsetLeft + box.offsetWidth/2 + "px";
-                  text.style.top = box.offsetTop + box.offsetHeight/2 + "px";
+                  text.style.top = box.offsetTop + 8*(w+1) + "px";
                   text.style.textAlign = "center";
                   text.style.transform = "translate(-50%, -50%)";
                   box.appendChild(text);
                   
                   const text1 = document.createElement("div");
-                  text1.innerHTML = "A"+a+"_"+b+"/"+(FilterNumber*FilterNumber2);
+                  text1.innerHTML = "Sum"+"("+"A"+(b*inputNumber/FilterNumber+parseInt(a))+")"+"/"+(FilterNumber*FilterNumber2);
+                  text1.style.fontSize = "2px"; 
                   text1.style.position = "absolute";
                   text1.style.left = box2.offsetLeft + box2.offsetWidth/2 + "px";
-                  text1.style.top = box2.offsetTop + box2.offsetHeight/2 + "px";
+                  text1.style.top = box2.offsetTop +  box2.offsetHeight/2 + 8+"px";
                   text1.style.textAlign = "center";
                   text1.style.transform = "translate(-50%, -50%)";
                   box1.appendChild(text1);
+                  u+=1;
 
                   if(i==0&&j==0){
                     left_off=box.offsetLeft;
@@ -222,33 +240,6 @@ function createBoxes_1() {
     // Add svg element to body
      document.getElementById("svgContainer").appendChild(svg);
 
-     //count parameter
-     if(outputNumber!=0){
-      $('#count span:first').html(
-        (inputNumber * inputNumber2) + ((inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1)) + parseInt(outputNumber)+
-        " nodes <br>" + 
-        (FilterNumber * FilterNumber2 * (inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1) + 
-        (inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1) * parseInt(outputNumber)) + 
-        " edges <br>" + 
-        (FilterNumber * FilterNumber2 + 1+(inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1)*(parseInt(outputNumber))+1) + 
-        " parameters <br>" +
-        (FilterNumber * FilterNumber2 *(inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1))+
-          "FLOPS"
-    );
-      }
-      else{
-        $('#count span:first').html(
-          (inputNumber * inputNumber2) + ((inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1)) + parseInt(outputNumber)+
-          " nodes <br>" + 
-          (FilterNumber * FilterNumber2 * (inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1) + 
-           (inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1) * parseInt(outputNumber)) + 
-          " edges <br>" + 
-          (FilterNumber * FilterNumber2 + 1+(inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1)*(parseInt(outputNumber))) + 
-          " parameters <br>"+
-          (FilterNumber * FilterNumber2 *(inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1))+
-          " FLOPS"
-        );
-      }
   }
 
       window.onresize = function() {
