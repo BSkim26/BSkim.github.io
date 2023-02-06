@@ -3,13 +3,13 @@ function create_box_check(){
     if (svg) {
     svg.parentNode.removeChild(svg);
     }  
-    if(e==2){
+    if(e==3){
       createBoxes_2();
     }
-    else if(e==1){
+    else if(e==2){
       createBoxes_1();
     }
-    else{
+    else if(e==1){
       createBoxes();
     }
 }
@@ -20,9 +20,9 @@ function createBoxes() {
   var depths = document.getElementById("inputNumber2").value;
   
   
-  var f_width = document.getElementById("FilterNumber0").value;
-  var f_height = document.getElementById("FilterNumber1").value;
-  var f_count = document.getElementById("FilterNumber2").value;
+  var f_width = document.getElementById("FilterNumber0_0").value;
+  var f_height = document.getElementById("FilterNumber0_1").value;
+  var f_count = document.getElementById("FilterNumber0_2").value;
   
   
   var outputNumber = document.getElementById("outputNumber").value;
@@ -216,9 +216,9 @@ function createBoxes_1() {
   var depths = document.getElementById("inputNumber2").value;
   
   
-  var f_width = document.getElementById("FilterNumber0").value;
-  var f_height = document.getElementById("FilterNumber1").value;
-  var f_count = document.getElementById("FilterNumber2").value;
+  var f_width = document.getElementById("FilterNumber0_0").value;
+  var f_height = document.getElementById("FilterNumber0_1").value;
+  var f_count = document.getElementById("FilterNumber0_2").value;
   
   var f_width1 = document.getElementById("FilterNumber1_0").value;
   var f_height1 = document.getElementById("FilterNumber1_1").value;
@@ -444,9 +444,9 @@ var columns = document.getElementById("inputNumber1").value;
 var depths = document.getElementById("inputNumber2").value;
 
 
-var f_width = document.getElementById("FilterNumber0").value;
-var f_height = document.getElementById("FilterNumber1").value;
-var f_count = document.getElementById("FilterNumber2").value;
+var f_width = document.getElementById("FilterNumber0_0").value;
+var f_height = document.getElementById("FilterNumber0_1").value;
+var f_count = document.getElementById("FilterNumber0_2").value;
 
 var f_width1 = document.getElementById("FilterNumber1_0").value;
 var f_height1 = document.getElementById("FilterNumber1_1").value;
@@ -742,11 +742,12 @@ return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
 
 var e=0;
 $(document).ready(function() {
-  var index = 1;
+  var index = 0;
+  
   $("#architecture").on("click", ".btn-add", function() {
-    if(e<2){
-    e++;
-    var inputGroup = `
+    var inputGroup = null;
+    if(e<3){
+    inputGroup = `
     <div class="row entry">
     <span class="input-group mb-2 mr-sm-2 col-4">
         필터 크기<br>
@@ -761,6 +762,7 @@ $(document).ready(function() {
     else{
       alert('필터는 최대 3개까지 추가할 수 있습니다.');
     }
+    e++;
   });
 });
 
