@@ -3,7 +3,8 @@ function create_box_check(){
     if (svg) {
     svg.parentNode.removeChild(svg);
     }  
-    if(e==3){
+
+    if(e>=3){
       createBoxes_2();
     }
     else if(e==2){
@@ -12,6 +13,8 @@ function create_box_check(){
     else if(e==1){
       createBoxes();
     }
+
+
 }
 
 function createBoxes() {
@@ -761,6 +764,7 @@ $(document).ready(function() {
     }
     else{
       alert('필터는 최대 3개까지 추가할 수 있습니다.');
+      create_box_check();
     }
     e++;
   });
