@@ -12,22 +12,7 @@
     <link type="text/css" rel="stylesheet" href="Feature_map_3D/css/Feature_map_3D.css">
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
-    <script type="text/javascript">
-        $(document).ready (function () {                
-            $('.btnAdd').click (function () {                                        
-                $('.addInput').append (                        
-                    '<input type="number" id="outputNumber" placeholder="Enter a number">\
-                    <button type="button" class="btnRemove">tag삭제하기</button><br>'                    
-                );    // input taf 추가                     
-                $('.btnRemove').on('click', function () { 
-                                                                              // 여기서 this는 '.btnRemove'
-                    $(this).prev().remove();        // .prev()로 input tag를 가리키고 remove()한다.
-                    $(this).next().remove();        // <br> 삭제
-                    $(this).remove();                        // 버튼삭제
-                });
-            });                                      
-        });
-        </script>
+
     <title>CNN</title>
 
 </head>
@@ -49,7 +34,7 @@
                             <div id="architecture">
                                 <div class="row entry">
                                     <span class="input-group mb-2 mr-sm-2 col-4">
-                                <button class="btn btn-primary input-group-prepend" onclick="createBoxes_1()">Create</button>
+                                <button class="btn btn-primary input-group-prepend" onclick="create_box_check()">Create</button>
                                 
                                 </span>
                             </div>
