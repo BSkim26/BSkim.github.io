@@ -1,6 +1,7 @@
 function create_box_check(){
   var rows = document.getElementById("inputNumber0").value;
   var columns = document.getElementById("inputNumber1").value;
+
   svg = document.querySelector("svg");
     if (svg) {
     svg.parentNode.removeChild(svg);
@@ -84,9 +85,11 @@ function create_box_check(){
   }
 
 
+
 }
 
 function createBoxes() {
+
   var rows = document.getElementById("inputNumber0").value;
   var columns = document.getElementById("inputNumber1").value;
   var depths = document.getElementById("inputNumber2").value;
@@ -103,6 +106,7 @@ function createBoxes() {
   
   var outputNumber = document.getElementById("outputNumber").value;
   var outputNumber1 = document.getElementById("outputNumber1").value;
+
   var k=[];
   k[0]=0;
   k[1]=0;
@@ -141,36 +145,36 @@ function createBoxes() {
   box.style.stroke = "red";
   boxes.appendChild(box);
   
-  if((columns)>=(columns-f_height +1)){
-  if((rows)>=(rows-f_width+1))
+
   for (let j = 0; j < f_count; j++) {
     k[1]+=1;
   var box = document.createElement("div");
   box.classList.add("box");
   box.id = "FM1_" + j;
-  box.style.width = ((columns+2*p_width-f_height +1)/parseInt(s_width)+1) * 20 + "px";
-  box.style.height = ((rows+2*p_height-f_width+1)/parseInt(s_height)+1) * 20 + "px";
+  box.style.height = Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1) * 20 + "px";
+   box.style.width = Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) * 20 + "px";
   box.style.left = ((window.innerWidth / 3.5) + (5 * j)) + "px";
-  box.style.top = ((window.innerHeight / 2 - ((rows+2*p_height-f_width+1)/parseInt(s_height)+1) * 20/2) + (5 * j)) + "px";
+  box.style.top = ((window.innerHeight / 2 - Math.floor((parseInt(rows)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) * 20/2) + (5 * j)) + "px";
   boxes.appendChild(box);
   
   }
-  }
+  
   
   var box = document.createElement("div");
   box.classList.add("box");
   box.id = "FM1_" + k[1];
-  box.style.width = ((columns+2*p_width-f_height +1)/parseInt(s_width)+1) * 5 + "px";
-  box.style.height = ((rows+2*p_height-f_width+1)/parseInt(s_height)+1) * 5 + "px";
+  box.style.height = Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)  * 5 + "px";
+  box.style.width = Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) * 5 + "px";
   box.style.left = ((window.innerWidth / 3.5) + (5 * (k[1]+1))) + "px";
-  box.style.top = ((window.innerHeight / 2 - ((rows+2*p_height-f_width+1)/parseInt(s_height)+1) * 20/2) + (5 * (k[1]+1))) + "px";
+  box.style.top = ((window.innerHeight / 2 - Math.floor((parseInt(rows)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) * 20/2) + (5 * (k[1]+1))) + "px";
   box.style.stroke = "red";
   boxes.appendChild(box);
   
   //원
-  
 
-  for (let j = 0; j < ((columns+2*p_width-f_height +1)/parseInt(s_width)+1)*((rows+2*p_height-f_width+1)/parseInt(s_height)+1)*f_count; j++) {
+  for (let j = 0; j < Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1) *
+  Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1)
+  *parseInt(f_count); j++) {
   var box = document.createElement("div");
   box.classList.add("box");
   box.id = "box_" + j;
@@ -178,7 +182,9 @@ function createBoxes() {
   box.style.width = 20 + "px";
   box.style.height = 20 + "px";
   box.style.left = (window.innerWidth /1.4) + "px";
-  box.style.top = (window.innerHeight / 2 - (((columns+2*p_width-f_height +1)/parseInt(s_width)+1)*((rows+2*p_height-f_width+1)/parseInt(s_height)+1)*f_count*30/2)) + (30 * j) + "px";
+  box.style.top = (window.innerHeight / 2 - Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1) *
+  Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1)
+  *parseInt(f_count)*30/2) + (30 * j) + "px";
   boxes.appendChild(box);
   }
   
@@ -209,7 +215,9 @@ function createBoxes() {
   
   // 선
   for(let c = 0; c < outputNumber; c++){
-  for(let d = 0; d < ((columns+2*p_width-f_height +1)/parseInt(s_width)+1)*((rows+2*p_height-f_width+1)/parseInt(s_height)+1)*f_count; d++){
+  for(let d = 0; d < Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1) *
+  Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1)
+  *parseInt(f_count); d++){
             let box2_1 = document.getElementById("box_" + d);
             let box3_1 = document.getElementById("box1_" + c);
             var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
@@ -266,7 +274,9 @@ function createBoxes() {
   svg.appendChild(line);
   }
   
-    for(let d = 0; d < ((columns+2*p_width-f_height +1)/parseInt(s_width)+1)*((rows+2*p_height-f_width+1)/parseInt(s_height)+1)*f_count; d++){
+    for(let d = 0; d < Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1) *
+    Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1)
+    *parseInt(f_count); d++){
               let box2_1 = document.getElementById("FM1_"+0);
               let box3_1 = document.getElementById("box_" + d);
               var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
@@ -286,6 +296,34 @@ function createBoxes() {
   for (var i = 0; i < buttons.length; i++) {
   buttons[i].classList.remove('hidden');
   };
+  $('#count span:first').html(
+    parseInt(f_width)*parseInt(f_height)*parseInt(depths)*parseInt(f_count) + + parseInt(f_count) +
+
+    Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)
+
+    *Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1)
+
+*parseInt(f_count)*parseInt(outputNumber) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1) +
+    " parameters <br>" +  
+    (((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1) *
+    Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1)
+    *parseInt(f_count)) *parseInt(outputNumber) +parseInt(outputNumber))*parseInt(f_width)*parseInt(f_height)
+
+    + (Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1) *
+    Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1)
+    *parseInt(f_count)) *parseInt(outputNumber)+(parseInt(outputNumber)*parseInt(outputNumber1)) +parseInt(outputNumber) +parseInt(outputNumber1))+
+
+      "FLOPS<br>"+
+
+      (parseInt(f_width)*parseInt(f_height)*parseInt(depths)*parseInt(f_count) + + parseInt(f_count) +
+
+    Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)
+
+    *Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1)
+
+*parseInt(f_count)*parseInt(outputNumber) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1) )*4+
+      "Memory Usage(byte)"
+);
   }
 
 function createBoxes_1() {
@@ -350,55 +388,53 @@ function createBoxes_1() {
   box.style.stroke = "red";
   boxes.appendChild(box);
   
-  if((columns)>=(columns-f_height +1)){
-    if((rows)>=(rows-f_width+1))
-    for (let j = 0; j < f_count; j++) {
-      k[1]+=1;
-    var box = document.createElement("div");
-    box.classList.add("box");
-    box.id = "FM1_" + j;
-    box.style.width = ((columns+2*p_width-f_height +1)/parseInt(s_width)+1) * 20 + "px";
-    box.style.height = ((rows+2*p_height-f_width+1)/parseInt(s_height)+1) * 20 + "px";
-    box.style.left = ((window.innerWidth / 3.5) + (5 * j)) + "px";
-    box.style.top = ((window.innerHeight / 2 - ((rows+2*p_height-f_width+1)/parseInt(s_height)+1) * 20/2) + (5 * j)) + "px";
-    boxes.appendChild(box);
+
+  for (let j = 0; j < f_count; j++) {
+    k[1]+=1;
+  var box = document.createElement("div");
+  box.classList.add("box");
+  box.id = "FM1_" + j;
+  box.style.height = Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1) * 20 + "px";
+   box.style.width = Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) * 20 + "px";
+  box.style.left = ((window.innerWidth / 3.5) + (5 * j)) + "px";
+  box.style.top = ((window.innerHeight / 2 - Math.floor((parseInt(rows)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) * 20/2) + (5 * j)) + "px";
+  boxes.appendChild(box);
+  
+  }
+  
+  
+  var box = document.createElement("div");
+  box.classList.add("box");
+  box.id = "FM1_" + k[1];
+  box.style.height = Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)  * 5 + "px";
+  box.style.width = Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) * 5 + "px";
+  box.style.left = ((window.innerWidth / 3.5) + (5 * (k[1]+1))) + "px";
+  box.style.top = ((window.innerHeight / 2 - Math.floor((parseInt(rows)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) * 20/2) + (5 * (k[1]+1))) + "px";
+  box.style.stroke = "red";
+  boxes.appendChild(box);
     
-    }
-    }
-    
-    var box = document.createElement("div");
-    box.classList.add("box");
-    box.id = "FM1_" + k[1];
-    box.style.width = ((columns+2*p_width-f_height +1)/parseInt(s_width)+1) * 5 + "px";
-    box.style.height = ((rows+2*p_height-f_width+1)/parseInt(s_height)+1) * 5 + "px";
-    box.style.left = ((window.innerWidth / 3.5) + (5 * (k[1]+1))) + "px";
-    box.style.top = ((window.innerHeight / 2 - ((rows+2*p_height-f_width+1)/parseInt(s_height)+1) * 20/2) + (5 * (k[1]+1))) + "px";
-    box.style.stroke = "red";
-    boxes.appendChild(box);
-    
-    if(((columns+2*p_width-f_height +1)/parseInt(s_width)+1)>=f_height1){
-    if(((rows+2*p_height-f_width+1)/parseInt(s_height)+1) >=f_width1)
+
     for (let j = 0; j < f_count1; j++) {
       k[2]+=1;
     var box = document.createElement("div");
     box.classList.add("box");
     box.id = "FM2_" + j;
-    box.style.width = ((((columns+2*p_width-f_height +1)/parseInt(s_width)+1)-f_height1 +2*p_width1+1)/parseInt(s_width1)+1) * 20 + "px";
-    box.style.height = ((((rows+2*p_height-f_width+1)/parseInt(s_height)+1)-f_width1+2*p_height1+1)/parseInt(s_height1)+1) * 20 + "px";
+    box.style.height= Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1) * 20 + "px";
+    box.style.width = Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1) * 20 + "px";
     box.style.left = ((window.innerWidth / 2.4) + (5 * j)) + "px";
-    box.style.top = ((window.innerHeight / 2 - ((((rows+2*p_height-f_width+1)/parseInt(s_height)+1)-f_width1+2*p_height1+1)/parseInt(s_height1)+1)*20/2) + (5 * j)) + "px";
+    box.style.top = ((window.innerHeight / 2 - Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)*20/2) + (5 * j)) + "px";
     boxes.appendChild(box);
     
     }
-    }
+    
     
     var box = document.createElement("div");
     box.classList.add("box");
     box.id = "FM2_" + k[2];
-    box.style.width = ((((columns+2*p_width-f_height +1)/parseInt(s_width)+1)-f_height1 +2*p_width1+1)/parseInt(s_width1)+1) * 5 + "px";
-    box.style.height = ((((rows+2*p_height-f_width+1)/parseInt(s_height)+1)-f_width1+2*p_height1+1)/parseInt(s_height1)+1) * 5 + "px";
+    box.style.width = Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1) * 5 + "px";
+    box.style.height = Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1) * 5 + "px";
     box.style.left = ((window.innerWidth / 2.4) + (5 * (k[2]+1))) + "px";
-    box.style.top = ((window.innerHeight / 2 - ((((rows+2*p_height-f_width+1)/parseInt(s_height)+1)-f_width1+2*p_height1+1)/parseInt(s_height1)+1)*20/2) + (5 * (k[2]+1))) + "px";
+    box.style.top = ((window.innerHeight / 2 - Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)*20/2) + (5 * (k[2]+1))) + "px";
     box.style.stroke = "red";
     boxes.appendChild(box);
   
@@ -406,9 +442,9 @@ function createBoxes_1() {
   //원
   
 
-  for (let j = 0; j < ((((columns+2*p_width-f_height +1)/parseInt(s_width)+1)-f_height1 +2*p_width1+1)/parseInt(s_width1)+1)
-  *((((rows+2*p_height-f_width+1)/parseInt(s_height)+1)-f_width1+2*p_height1+1)/parseInt(s_height1)+1)
-  *f_count1; j++) {
+  for (let j = 0; j < Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+  *Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+  *parseInt(f_count1); j++) {
   var box = document.createElement("div");
   box.classList.add("box");
   box.id = "box_" + j;
@@ -416,9 +452,9 @@ function createBoxes_1() {
   box.style.width = 20 + "px";
   box.style.height = 20 + "px";
   box.style.left = (window.innerWidth /1.4) + "px";
-  box.style.top = ((window.innerHeight / 2 - ((((columns+2*p_width-f_height +1)/parseInt(s_width)+1)-f_height1 +2*p_width1+1)/parseInt(s_width1)+1)
-  *((((rows+2*p_height-f_width+1)/parseInt(s_height)+1)-f_width1+2*p_height1+1)/parseInt(s_height1)+1)
-  *f_count1*30/2)) + (30 * j) + "px";
+  box.style.top = (window.innerHeight / 2 - Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+  *Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+  *parseInt(f_count1)*30/2) + (30 * j) + "px";
   boxes.appendChild(box);
   }
   
@@ -449,9 +485,9 @@ function createBoxes_1() {
   
   // 선
   for(let c = 0; c < outputNumber; c++){
-  for(let d = 0; d < ((((columns+2*p_width-f_height +1)/parseInt(s_width)+1)-f_height1 +2*p_width1+1)/parseInt(s_width1)+1)
-  *((((rows+2*p_height-f_width+1)/parseInt(s_height)+1)-f_width1+2*p_height1+1)/parseInt(s_height1)+1)
-  *f_count1; d++){
+  for(let d = 0; d < Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+  *Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+  *parseInt(f_count1); d++){
             let box2_1 = document.getElementById("box_" + d);
             let box3_1 = document.getElementById("box1_" + c);
             var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
@@ -507,9 +543,9 @@ function createBoxes_1() {
   svg.appendChild(line);
   }
   
-    for(let d = 0; d < ((((columns+2*p_width-f_height +1)/parseInt(s_width)+1)-f_height1 +2*p_width1+1)/parseInt(s_width1)+1)
-    *((((rows+2*p_height-f_width+1)/parseInt(s_height)+1)-f_width1+2*p_height1+1)/parseInt(s_height1)+1)
-    *f_count1; d++){
+    for(let d = 0; d < Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+    *Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+    *parseInt(f_count1); d++){
               let box2_1 = document.getElementById("FM2_"+0);
               let box3_1 = document.getElementById("box_" + d);
               var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
@@ -529,7 +565,33 @@ function createBoxes_1() {
   for (var i = 0; i < buttons.length; i++) {
   buttons[i].classList.remove('hidden');
   };
+  $('#count span:first').html(
+    parseInt(f_width)*parseInt(f_height)*parseInt(depths)*parseInt(f_count) + parseInt(f_width1)*parseInt(f_height1)*parseInt(f_count)*parseInt(f_count1)+
+     parseInt(f_count)+parseInt(f_count1) +
+
+     Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+    *Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+    *parseInt(f_count1)*parseInt(outputNumber) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1) +
+    " parameters <br>" +  
+    ((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+    *Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+    *parseInt(f_count1)*parseInt(outputNumber) +parseInt(outputNumber))*parseInt(f_width1)*parseInt(f_height1)
+
+    + (Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+    *Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+    *parseInt(f_count1)) *parseInt(outputNumber)+(parseInt(outputNumber)*parseInt(outputNumber1)) +parseInt(outputNumber) +parseInt(outputNumber1))+
+  
+      "FLOPS<br>"+
+      (parseInt(f_width)*parseInt(f_height)*parseInt(depths)*parseInt(f_count) + parseInt(f_width1)*parseInt(f_height1)*parseInt(f_count)*parseInt(f_count1)+
+      parseInt(f_count)+parseInt(f_count1) +
+ 
+      Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+     *Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+     *parseInt(f_count1)*parseInt(outputNumber) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1))*4+
+      "Memory Usage(byte)"
+);
   }
+
 
 
 function createBoxes_2() {
@@ -564,6 +626,7 @@ var s_height2 = document.getElementById("s_Number2_1").value;
 
 var outputNumber = document.getElementById("outputNumber").value;
 var outputNumber1 = document.getElementById("outputNumber1").value;
+
 var k=[];
 k[0]=0;
 k[1]=0;
@@ -602,89 +665,93 @@ box.style.top = ((window.innerHeight / 2- columns * 20/2) + (5 * (k[0]+1))) + "p
 box.style.stroke = "red";
 boxes.appendChild(box);
 
-if((columns)>=(columns-f_height +1)){
-if((rows)>=(rows-f_width+1))
+
 for (let j = 0; j < f_count; j++) {
   k[1]+=1;
 var box = document.createElement("div");
 box.classList.add("box");
 box.id = "FM1_" + j;
-box.style.width = ((columns+2*p_width-f_height +1)/parseInt(s_width)+1) * 20 + "px";
-box.style.height = ((rows+2*p_height-f_width+1)/parseInt(s_height)+1) * 20 + "px";
+box.style.height = Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1) * 20 + "px";
+ box.style.width = Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) * 20 + "px";
 box.style.left = ((window.innerWidth / 3.5) + (5 * j)) + "px";
-box.style.top = ((window.innerHeight / 2 - ((rows+2*p_height-f_width+1)/parseInt(s_height)+1) * 20/2) + (5 * j)) + "px";
+box.style.top = ((window.innerHeight / 2 - Math.floor((parseInt(rows)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) * 20/2) + (5 * j)) + "px";
 boxes.appendChild(box);
 
-}
+
 }
 
 var box = document.createElement("div");
 box.classList.add("box");
 box.id = "FM1_" + k[1];
-box.style.width = ((columns+2*p_width-f_height +1)/parseInt(s_width)+1) * 5 + "px";
-box.style.height = ((rows+2*p_height-f_width+1)/parseInt(s_height)+1) * 5 + "px";
+box.style.height = Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)  * 5 + "px";
+box.style.width = Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) * 5 + "px";
 box.style.left = ((window.innerWidth / 3.5) + (5 * (k[1]+1))) + "px";
-box.style.top = ((window.innerHeight / 2 - ((rows+2*p_height-f_width+1)/parseInt(s_height)+1) * 20/2) + (5 * (k[1]+1))) + "px";
+box.style.top = ((window.innerHeight / 2 - Math.floor((parseInt(rows)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) * 20/2) + (5 * (k[1]+1))) + "px";
 box.style.stroke = "red";
 boxes.appendChild(box);
+  
 
-if(((columns+2*p_width-f_height +1)/parseInt(s_width)+1)>=f_height1){
-if(((rows+2*p_height-f_width+1)/parseInt(s_height)+1) >=f_width1)
-for (let j = 0; j < f_count1; j++) {
-  k[2]+=1;
-var box = document.createElement("div");
-box.classList.add("box");
-box.id = "FM2_" + j;
-box.style.width = ((((columns+2*p_width-f_height +1)/parseInt(s_width)+1)-f_height1 +2*p_width1+1)/parseInt(s_width1)+1) * 20 + "px";
-box.style.height = ((((rows+2*p_height-f_width+1)/parseInt(s_height)+1)-f_width1+2*p_height1+1)/parseInt(s_height1)+1) * 20 + "px";
-box.style.left = ((window.innerWidth / 2.4) + (5 * j)) + "px";
-box.style.top = ((window.innerHeight / 2 - ((((rows+2*p_height-f_width+1)/parseInt(s_height)+1)-f_width1+2*p_height1+1)/parseInt(s_height1)+1)*20/2) + (5 * j)) + "px";
-boxes.appendChild(box);
+  for (let j = 0; j < f_count1; j++) {
+    k[2]+=1;
+  var box = document.createElement("div");
+  box.classList.add("box");
+  box.id = "FM2_" + j;
+  box.style.height= Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1) * 20 + "px";
+  box.style.width = Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1) * 20 + "px";
+  box.style.left = ((window.innerWidth / 2.4) + (5 * j)) + "px";
+  box.style.top = ((window.innerHeight / 2 - Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)*20/2) + (5 * j)) + "px";
+  boxes.appendChild(box);
+  
+  }
+  
+  
+  var box = document.createElement("div");
+  box.classList.add("box");
+  box.id = "FM2_" + k[2];
+  box.style.width = Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1) * 5 + "px";
+  box.style.height = Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1) * 5 + "px";
+  box.style.left = ((window.innerWidth / 2.4) + (5 * (k[2]+1))) + "px";
+  box.style.top = ((window.innerHeight / 2 - Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)*20/2) + (5 * (k[2]+1))) + "px";
+  box.style.stroke = "red";
+  boxes.appendChild(box);
 
-}
-}
+  
 
-var box = document.createElement("div");
-box.classList.add("box");
-box.id = "FM2_" + k[2];
-box.style.width = ((((columns+2*p_width-f_height +1)/parseInt(s_width)+1)-f_height1 +2*p_width1+1)/parseInt(s_width1)+1) * 5 + "px";
-box.style.height = ((((rows+2*p_height-f_width+1)/parseInt(s_height)+1)-f_width1+2*p_height1+1)/parseInt(s_height1)+1) * 5 + "px";
-box.style.left = ((window.innerWidth / 2.4) + (5 * (k[2]+1))) + "px";
-box.style.top = ((window.innerHeight / 2 - ((((rows+2*p_height-f_width+1)/parseInt(s_height)+1)-f_width1+2*p_height1+1)/parseInt(s_height1)+1)*20/2) + (5 * (k[2]+1))) + "px";
-box.style.stroke = "red";
-boxes.appendChild(box);
-
-if((((columns+2*p_width-f_height +1)/parseInt(s_width)+1)-f_height1 +2*p_width1+1)>=f_height2){
-if((((rows+2*p_height-f_width+1)/parseInt(s_height)+1)-f_width1+2*p_height1+1)>=f_width2)
 for (let j = 0; j < f_count2; j++) {
   k[3]+=1;
 var box = document.createElement("div");
 box.classList.add("box");
 box.id = "FM3_" + j;
-box.style.width = ((((((columns+2*p_width-f_height +1)/parseInt(s_width)+1)-f_height1 +2*p_width1+1)/parseInt(s_width1)+1)-f_height2+2*p_width2 +1)/parseInt(s_width2)+1) * 20 + "px";
-box.style.height = ((((((rows+2*p_height-f_width+1)/parseInt(s_height)+1)-f_width1+2*p_height1+1)/parseInt(s_height1)+1)-f_width2+2*p_height2+1)/parseInt(s_height2)+1) * 20 + "px";
+box.style.width = Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+-parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1) * 20 + "px";
+box.style.height = Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+-parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1) * 20 + "px";
 box.style.left = ((window.innerWidth /1.8) + (5 * j)) + "px";
-box.style.top = ((window.innerHeight / 2 - ((((((rows+2*p_height-f_width+1)/parseInt(s_height)+1)-f_width1+2*p_height1+1)/parseInt(s_height1)+1)-f_width2+2*p_height2+1)/parseInt(s_height2)+1) * 20/2) + (5 * j)) + "px";
+box.style.top = ((window.innerHeight / 2 - Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+-parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1) * 20/2) + (5 * j)) + "px";
 boxes.appendChild(box);
 }
-}
+
 
 var box = document.createElement("div");
 box.classList.add("box");
 box.id = "FM3_" + k[3];
-box.style.width = ((((((columns+2*p_width-f_height +1)/parseInt(s_width)+1)-f_height1 +2*p_width1+1)/parseInt(s_width1)+1)-f_height2+2*p_width2 +1)/parseInt(s_width2)+1) * 5 + "px";
-box.style.height = ((((((rows+2*p_height-f_width+1)/parseInt(s_height)+1)-f_width1+2*p_height1+1)/parseInt(s_height1)+1)-f_width2+2*p_height2+1)/parseInt(s_height2)+1) * 5 + "px";
+box.style.width = Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+-parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1) * 5 + "px";
+box.style.height = Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+-parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1) * 5 + "px";
 box.style.left = ((window.innerWidth /1.8) + (5 * (k[3]+1))) + "px";
-box.style.top = (window.innerHeight / 2 - ((((((rows+2*p_height-f_width+1)/parseInt(s_height)+1)-f_width1+2*p_height1+1)/parseInt(s_height1)+1)-f_width2+2*p_height2+1)/parseInt(s_height2)+1) * 20/2) + (5 * (k[3]+1)) + "px";
+box.style.top = (window.innerHeight / 2 - Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+-parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1) * 20/2) + (5 * (k[3]+1)) + "px";
 box.style.stroke = "red";
 boxes.appendChild(box);
 //원
 
-if(((columns-f_height +1)-f_height1 +1)>=f_height2){
-if(((rows-f_width+1)-f_width1+1)>=f_width2)
-for (let j = 0; j < ((((((columns+2*p_width-f_height +1)/parseInt(s_width)+1)-f_height1 +2*p_width1+1)/parseInt(s_width1)+1)-f_height2+2*p_width2 +1)/parseInt(s_width2)+1)
-*((((((rows+2*p_height-f_width+1)/parseInt(s_height)+1)-f_width1+2*p_height1+1)/parseInt(s_height1)+1)-f_width2+2*p_height2+1)/parseInt(s_height2)+1)
-*f_count2; j++) {
+for (let j = 0; j < Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+-parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+*Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+-parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+*parseInt(f_count2); j++) {
 var box = document.createElement("div");
 box.classList.add("box");
 box.id = "box_" + j;
@@ -692,12 +759,14 @@ box.style.borderRadius = "50%";
 box.style.width = 20 + "px";
 box.style.height = 20 + "px";
 box.style.left = (window.innerWidth /1.4) + "px";
-box.style.top = ((window.innerHeight / 2 - ((((((columns+2*p_width-f_height +1)/parseInt(s_width)+1)-f_height1 +2*p_width1+1)/parseInt(s_width1)+1)-f_height2+2*p_width2 +1)/parseInt(s_width2)+1)
-*((((((rows+2*p_height-f_width+1)/parseInt(s_height)+1)-f_width1+2*p_height1+1)/parseInt(s_height1)+1)-f_width2+2*p_height2+1)/parseInt(s_height2)+1)
-*f_count2*30/2)) + (30 * j) + "px";
+box.style.top = ((window.innerHeight / 2 - Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+-parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+*Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+-parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+*parseInt(f_count2)*30/2)) + (30 * j) + "px";
 boxes.appendChild(box);
 }
-}
+
 
 for (let j = 0; j < outputNumber; j++) {
 var box = document.createElement("div");
@@ -725,9 +794,11 @@ boxes.appendChild(box);
 
 // 선
 for(let c = 0; c < outputNumber; c++){
-for(let d = 0; d < ((((((columns+2*p_width-f_height +1)/parseInt(s_width)+1)-f_height1 +2*p_width1+1)/parseInt(s_width1)+1)-f_height2+2*p_width2 +1)/parseInt(s_width2)+1)
-*((((((rows+2*p_height-f_width+1)/parseInt(s_height)+1)-f_width1+2*p_height1+1)/parseInt(s_height1)+1)-f_width2+2*p_height2+1)/parseInt(s_height2)+1)
-*f_count2; d++){
+for(let d = 0; d < Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+-parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+*Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+-parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+*parseInt(f_count2); d++){
           let box2_1 = document.getElementById("box_" + d);
           let box3_1 = document.getElementById("box1_" + c);
           var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
@@ -783,9 +854,11 @@ line.style.strokeWidth = "1px";
 svg.appendChild(line);
 }
 
-  for(let d = 0; d < ((((((columns+2*p_width-f_height +1)/parseInt(s_width)+1)-f_height1 +2*p_width1+1)/parseInt(s_width1)+1)-f_height2+2*p_width2 +1)/parseInt(s_width2)+1)
-  *((((((rows+2*p_height-f_width+1)/parseInt(s_height)+1)-f_width1+2*p_height1+1)/parseInt(s_height1)+1)-f_width2+2*p_height2+1)/parseInt(s_height2)+1)
-  *f_count2; d++){
+  for(let d = 0; d < Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+  -parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+  *Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+  -parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+  *parseInt(f_count2); d++){
             let box2_1 = document.getElementById("FM3_"+0);
             let box3_1 = document.getElementById("box_" + d);
             var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
@@ -805,44 +878,56 @@ var buttons = document.querySelectorAll('.hidden');
 for (var i = 0; i < buttons.length; i++) {
 buttons[i].classList.remove('hidden');
 };
-if(outputNumber!=0){
-  $('#count span:first').html(
-    (inputNumber * inputNumber2) + ((inputNumber-FilterNumber)/parseInt(s_Number)+1) * ((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1) + parseInt(outputNumber)+
-    " nodes <br>" + 
-    ((FilterNumber * FilterNumber2) * ((inputNumber-FilterNumber)/parseInt(s_Number)+1) * ((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1)+ 
-    ((inputNumber-FilterNumber)/parseInt(s_Number)+1) * ((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1) * parseInt(outputNumber)) + 
-    " edges <br>" + 
-    (FilterNumber * FilterNumber2 + 1 +((inputNumber-FilterNumber)/parseInt(s_Number)+1) * ((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1)*(parseInt(outputNumber))+1) + 
-    " parameters <br>" +
-    ((FilterNumber * FilterNumber2 *((inputNumber-FilterNumber)/parseInt(s_Number)+1) * ((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1)+
-    ((inputNumber-FilterNumber)/parseInt(s_Number)+1) * ((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1))
-      +((inputNumber-FilterNumber)/parseInt(s_Number)+1) * ((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1)*(parseInt(outputNumber))+parseInt(outputNumber))+
-      "FLOPS"
+
+$('#count span:first').html(
+  parseInt(f_width)*parseInt(f_height)*parseInt(depths)*parseInt(f_count) + parseInt(f_width1)*parseInt(f_height1)*parseInt(f_count)*parseInt(f_count1)+
+  parseInt(f_width2)*parseInt(f_height2)*parseInt(f_count1)*parseInt(f_count2)+ parseInt(f_count)+parseInt(f_count1) +parseInt(f_count2) +
+
+   (Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+-parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+*Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+-parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+*parseInt(f_count2)) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1) +
+
+  
+  " parameters <br>" +  
+  ((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+  *Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+  *parseInt(f_count1)*parseInt(outputNumber) +parseInt(outputNumber))*parseInt(f_width1)*parseInt(f_height1) +
+
+  (Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+-parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+*Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+-parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+*parseInt(f_count2))*parseInt(f_width2)*parseInt(f_height2) +
+
++ (Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+-parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+*Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+-parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+*parseInt(f_count2)) *parseInt(outputNumber)+(parseInt(outputNumber)*parseInt(outputNumber1)) +parseInt(outputNumber) +parseInt(outputNumber1))+
+    "FLOPS<br>"+
+(parseInt(f_width)*parseInt(f_height)*parseInt(depths)*parseInt(f_count) + parseInt(f_width1)*parseInt(f_height1)*parseInt(f_count)*parseInt(f_count1)+
+parseInt(f_width2)*parseInt(f_height2)*parseInt(f_count1)*parseInt(f_count2)+ parseInt(f_count)+parseInt(f_count1) +parseInt(f_count2) +
+
+ (Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width)+1)/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+-parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+*Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) +1)/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+-parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+*parseInt(f_count2)) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1))*4+
+    "Memory Usage(byte)"
 );
-  }
-  else{
-    $('#count span:first').html(
-      (inputNumber * inputNumber2) + ((inputNumber-FilterNumber)/parseInt(s_Number)+1) * ((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1) +
-      " nodes <br>" + 
-      ((FilterNumber * FilterNumber2) * ((inputNumber-FilterNumber)/parseInt(s_Number)+1) * ((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1)) + 
-      " edges <br>" + 
-      (FilterNumber * FilterNumber2 + 1) + 
-      " parameters <br>"+
-      (FilterNumber * FilterNumber2 *((inputNumber-FilterNumber)/parseInt(s_Number)+1) * ((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1)+
-      ((inputNumber-FilterNumber)/parseInt(s_Number)+1) * ((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1))+
-      " FLOPS"
-    );
-  }
+
 }
 
 
-// 줌기능 구현 안함
+// 줌기능
 window.onresize = function() {
 svg = document.querySelector("svg");
 if (svg) {
 svg.parentNode.removeChild(svg);
 }
-createBoxes();
+create_box_check();
 }
 const zoomElement = document.querySelector(".container");
 let zoom = 1;
@@ -893,15 +978,15 @@ $(document).ready(function() {
     <div class="row entry">
     <span class="input-group mb-2 mr-sm-2 col-4">
         필터 크기<br>
-        rows : <input type="number" id="FilterNumber${index}_0" placeholder="Enter a number"></input>
-        columns : <input type="number" id="FilterNumber${index}_1" placeholder="Enter a number"></input>
-        count : <input type="number" id="FilterNumber${index}_2" placeholder="Enter a number"></input>
+        rows : <input type="number" id="FilterNumber${index}_0" placeholder="Enter a number"value="2"></input>
+        columns : <input type="number" id="FilterNumber${index}_1" placeholder="Enter a number"value="2"></input>
+        count : <input type="number" id="FilterNumber${index}_2" placeholder="Enter a number"value="2"></input>
         Padding<br>
-        행 : <input type="number" id="p_Number${index}_0" placeholder="Enter a number">
-        열 : <input type="number" id="p_Number${index}_1" placeholder="Enter a number">
+        행 : <input type="number" id="p_Number${index}_0" placeholder="Enter a number"value="2">
+        열 : <input type="number" id="p_Number${index}_1" placeholder="Enter a number"value="2">
         Stride<br>
-        행 : <input type="number" id="s_Number${index}_0" placeholder="Enter a number">
-        열 : <input type="number" id="s_Number${index}_1" placeholder="Enter a number">
+        행 : <input type="number" id="s_Number${index}_0" placeholder="Enter a number"value="2">
+        열 : <input type="number" id="s_Number${index}_1" placeholder="Enter a number"value="2">
         <hr>
     </span>
     `;
