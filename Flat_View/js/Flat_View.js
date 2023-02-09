@@ -136,7 +136,9 @@ function createBoxes_1() {
         (FilterNumber * FilterNumber2 + 1+(inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1)*(parseInt(outputNumber))+1) + 
         " parameters <br>" +
         (FilterNumber * FilterNumber2 *(inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1))+
-          "FLOPS"
+        "FLOPS<br>" +
+        (FilterNumber * FilterNumber2 + 1+(inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1)*(parseInt(outputNumber))+1)*4+
+        "Memory Usage(byte)"
     );
       }
       else{
@@ -149,7 +151,10 @@ function createBoxes_1() {
           (FilterNumber * FilterNumber2 + 1+(inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1)*(parseInt(outputNumber))) + 
           " parameters <br>"+
           (FilterNumber * FilterNumber2 *(inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1))+
-          " FLOPS"
+          "FLOPS<br>" +
+          (FilterNumber * FilterNumber2 + 1+(inputNumber - FilterNumber + 1) * (inputNumber2 - FilterNumber2 + 1)*(parseInt(outputNumber)))*4+
+          "Memory Usage(byte)"
+
         );
       }
 }

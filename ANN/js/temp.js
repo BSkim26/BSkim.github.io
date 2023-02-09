@@ -12,7 +12,7 @@ function restart() {
 
     if(fcnn.graph.links.length>=3000){alert('edge의 개수가 3000개 이상일 수 없습니다.'); this.value =1; restart();};
 
-    $('#count span:first').html(fcnn.graph.nodes.length+" nodes<br> " +fcnn.graph.links.length+" edges "+ +"parameters")
+    $('#count span:first').html(fcnn.graph.nodes.length+" nodes<br> " +fcnn.graph.links.length+" edges ")
 }
 
 restart();
