@@ -83,8 +83,8 @@ function createBoxes_1() {
     }
 
     // Create Circle
-    for (let i = 0; i < (inputNumber-FilterNumber)/parseInt(s_Number)+1; i++) {
-      for (let j = 0; j < (inputNumber2-FilterNumber2)/parseInt(s_Number2)+1; j++) {
+    for (let i = 0; i < Math.floor((inputNumber-FilterNumber)/parseInt(s_Number)+1); i++) {
+      for (let j = 0; j < Math.floor((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1); j++) {
         let box = document.createElement("div");
         box.classList.add("box2");
         box.id = "box2_" + i + "_" + j;
@@ -103,8 +103,8 @@ function createBoxes_1() {
 
     let colors = ["red", "blue", "green",  "linen", "orange","lime","coral","cyan","darkgray"];
     // Create and add lines to svg element
-    for(let a = 0; a < (inputNumber2-FilterNumber2)/parseInt(s_Number2)+1; a++){
-      for(let b = 0; b < (inputNumber-FilterNumber)/parseInt(s_Number)+1; b++){
+    for(let a = 0; a < Math.floor((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1); a++){
+      for(let b = 0; b < Math.floor((inputNumber-FilterNumber)/parseInt(s_Number)+1); b++){
           for (let i = 0; i < FilterNumber; i++) {
               for (let j = 0; j < FilterNumber2; j++) {
                   let box = document.getElementById("box_" + (i+parseInt(s_Number)*b) + "_" + (j+parseInt(s_Number2)*a));
@@ -167,8 +167,8 @@ function createBoxes_1() {
       }
     }
     for(let c = 0; c < outputNumber; c++){
-      for(let d = 0; d < (inputNumber-FilterNumber)/parseInt(s_Number)+1; d++){
-        for(let e = 0; e < (inputNumber2-FilterNumber2)/parseInt(s_Number2)+1; e++){
+      for(let d = 0; d < Math.floor((inputNumber-FilterNumber)/parseInt(s_Number)+1); d++){
+        for(let e = 0; e < Math.floor((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1); e++){
                   let box2_1 = document.getElementById("box2_" + d+"_"+e);
                   let box3_1 = document.getElementById("box3_" + c);
                   var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
@@ -184,8 +184,8 @@ function createBoxes_1() {
         }
 
         for(let c = 0; c < outputNumber; c++){
-          for(let d = 0; d < (inputNumber-FilterNumber)/parseInt(s_Number)+1; d++){
-            for(let e = 0; e < (inputNumber2-FilterNumber2)/parseInt(s_Number2)+1; e++){
+          for(let d = 0; d < Math.floor((inputNumber-FilterNumber)/parseInt(s_Number)+1); d++){
+            for(let e = 0; e < Math.floor((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1); e++){
                       let box2_1 = document.getElementById("box2_" + d+"_"+e);
                       let box3_1 = document.getElementById("box3_" + c);
                       var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
@@ -207,29 +207,29 @@ function createBoxes_1() {
      //count parameter
      if(outputNumber!=0){
       $('#count span:first').html(
-        (inputNumber * inputNumber2) + ((inputNumber-FilterNumber)/parseInt(s_Number)+1) * ((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1) + parseInt(outputNumber)+
+        (inputNumber * inputNumber2) + Math.floor((inputNumber-FilterNumber)/parseInt(s_Number)+1) * Math.floor((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1) + parseInt(outputNumber)+
         " nodes <br>" + 
-        ((FilterNumber * FilterNumber2) * ((inputNumber-FilterNumber)/parseInt(s_Number)+1) * ((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1)+ 
-        ((inputNumber-FilterNumber)/parseInt(s_Number)+1) * ((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1) * parseInt(outputNumber)) + 
+        ((FilterNumber * FilterNumber2) * Math.floor((inputNumber-FilterNumber)/parseInt(s_Number)+1) * Math.floor((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1)+ 
+        Math.floor((inputNumber-FilterNumber)/parseInt(s_Number)+1) * Math.floor((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1)* parseInt(outputNumber)) + 
         " edges <br>" + 
-        (FilterNumber * FilterNumber2 + 1 +((inputNumber-FilterNumber)/parseInt(s_Number)+1) * ((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1)*(parseInt(outputNumber))+1) + 
+        (FilterNumber * FilterNumber2 + 1 +Math.floor((inputNumber-FilterNumber)/parseInt(s_Number)+1) * ((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1)*(parseInt(outputNumber))+1) + 
         " parameters <br>" +
-        ((FilterNumber * FilterNumber2 *((inputNumber-FilterNumber)/parseInt(s_Number)+1) * ((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1)+
-        ((inputNumber-FilterNumber)/parseInt(s_Number)+1) * ((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1))
-          +((inputNumber-FilterNumber)/parseInt(s_Number)+1) * ((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1)*(parseInt(outputNumber))+parseInt(outputNumber))+
+        (FilterNumber * FilterNumber2 *Math.floor((inputNumber-FilterNumber)/parseInt(s_Number)+1) * ((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1)+
+        Math.floor((inputNumber-FilterNumber)/parseInt(s_Number)+1) * Math.floor((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1)
+          +Math.floor((inputNumber-FilterNumber)/parseInt(s_Number)+1) * Math.floor((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1)*(parseInt(outputNumber))+parseInt(outputNumber))+
           "FLOPS"
     );
       }
       else{
         $('#count span:first').html(
-          (inputNumber * inputNumber2) + ((inputNumber-FilterNumber)/parseInt(s_Number)+1) * ((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1) +
+          (inputNumber * inputNumber2) + Math.floor((inputNumber-FilterNumber)/parseInt(s_Number)+1) * Math.floor((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1) +
           " nodes <br>" + 
-          ((FilterNumber * FilterNumber2) * ((inputNumber-FilterNumber)/parseInt(s_Number)+1) * ((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1)) + 
+          (FilterNumber * FilterNumber2) * Math.floor((inputNumber-FilterNumber)/parseInt(s_Number)+1) * Math.floor((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1) + 
           " edges <br>" + 
           (FilterNumber * FilterNumber2 + 1) + 
           " parameters <br>"+
-          (FilterNumber * FilterNumber2 *((inputNumber-FilterNumber)/parseInt(s_Number)+1) * ((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1)+
-          ((inputNumber-FilterNumber)/parseInt(s_Number)+1) * ((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1))+
+          (FilterNumber * FilterNumber2 *Math.floor((inputNumber-FilterNumber)/parseInt(s_Number)+1) * ((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1)+
+          Math.floor((inputNumber-FilterNumber)/parseInt(s_Number)+1) * Math.floor((inputNumber2-FilterNumber2)/parseInt(s_Number2)+1))+
           " FLOPS"
         );
       }
