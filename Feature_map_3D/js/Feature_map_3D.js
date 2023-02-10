@@ -35,7 +35,7 @@ function create_box_check(){
       var p_height2 = document.getElementById("p_Number2_1").value;
       var s_width2 = document.getElementById("s_Number2_0").value;
       var s_height2 = document.getElementById("s_Number2_1").value;
-
+      
 
       if(rows>0&&columns>0&&f_width>0&&p_width>0&&p_height>0&&s_width>0&&s_height>0&&f_width1>0&&f_height1>0&&p_width1>0&&p_height1>0&&s_width1>0&&s_height1>0&& f_width2>0&&f_height2>0
         &&p_width2>0&&f_height2>0&&p_width2>0&&s_width2>0&&s_height2>0)
@@ -389,6 +389,7 @@ else{
   for (var i = 0; i < buttons.length; i++) {
   buttons[i].classList.remove('hidden');
   };
+  if(o[0]==0){
   $('#count span:first').html(
     parseInt(f_width)*parseInt(f_height)*parseInt(depths)*parseInt(f_count) + parseInt(f_count) +
 
@@ -418,6 +419,31 @@ else{
       "Memory Usage(byte)"
 );
   }
+  else{
+    $('#count span:first').html(
+  
+      Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) )/parseInt(s_height)+1)
+  
+      *Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1)
+  
+  *parseInt(f_count)*parseInt(outputNumber) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1) +
+      " parameters <br>" +  
+  
+      ((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1) *
+      Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1)
+      *parseInt(f_count)) *parseInt(outputNumber)+(parseInt(outputNumber)*parseInt(outputNumber1)) +parseInt(outputNumber) +parseInt(outputNumber1))+
+  
+        "FLOPS<br>"+
+  
+        (Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)
+  
+      *Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1)
+  
+  *parseInt(f_count)*parseInt(outputNumber) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1) )*4+
+        "Memory Usage(byte)"
+  );
+  }
+}
 
 function createBoxes_1() {
   var rows = document.getElementById("inputNumber0").value;
@@ -705,15 +731,20 @@ else{
   for (var i = 0; i < buttons.length; i++) {
   buttons[i].classList.remove('hidden');
   };
+  if(o[0]==0&&o[1]==0){
   $('#count span:first').html(
-    parseInt(f_width)*parseInt(f_height)*parseInt(depths)*parseInt(f_count) + parseInt(f_width1)*parseInt(f_height1)*parseInt(f_count)*parseInt(f_count1)+
+    (parseInt(f_width)*parseInt(f_height)*parseInt(depths)*parseInt(f_count) + parseInt(f_width1)*parseInt(f_height1)*parseInt(f_count)*parseInt(f_count1)+
      parseInt(f_count)+parseInt(f_count1) +
 
      Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
     *Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
-    *parseInt(f_count1)*parseInt(outputNumber) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1) +
+    *parseInt(f_count1)*parseInt(outputNumber) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1)) +
     " parameters <br>" +  
-    ((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+    (((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) )/parseInt(s_height)+1) *
+    Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1)
+    *parseInt(f_count)) *parseInt(outputNumber) +parseInt(outputNumber))*parseInt(f_width)*parseInt(f_height)+
+
+      (Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
     *Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
     *parseInt(f_count1)*parseInt(outputNumber) +parseInt(outputNumber))*parseInt(f_width1)*parseInt(f_height1)
 
@@ -724,7 +755,11 @@ else{
       "FLOPS<br>"+
       (parseInt(f_width)*parseInt(f_height)*parseInt(depths)*parseInt(f_count) + parseInt(f_width1)*parseInt(f_height1)*parseInt(f_count)*parseInt(f_count1)+
       parseInt(f_count)+parseInt(f_count1) +
- 
+
+      ((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) )/parseInt(s_height)+1) *
+      Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1)
+      *parseInt(f_count)) *parseInt(outputNumber) +parseInt(outputNumber))*parseInt(f_width)*parseInt(f_height)+
+
       Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
      *Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) )/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
      *parseInt(f_count1)*parseInt(outputNumber) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1))*4+
@@ -732,6 +767,83 @@ else{
 );
   }
 
+else if(o[0]==1&&o[1]==0){
+  $('#count span:first').html(
+     (parseInt(f_width1)*parseInt(f_height1)*parseInt(f_count)*parseInt(f_count1)+
+    parseInt(f_count1) +
+
+     Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+    *Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+    *parseInt(f_count1)*parseInt(outputNumber) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1)) +
+    " parameters <br>" +  
+    ((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+    *Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+    *parseInt(f_count1)*parseInt(outputNumber) +parseInt(outputNumber))*parseInt(f_width1)*parseInt(f_height1)
+
+    +(Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+    *Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+    *parseInt(f_count1)) *parseInt(outputNumber)+(parseInt(outputNumber)*parseInt(outputNumber1)) +parseInt(outputNumber) +parseInt(outputNumber1))+
+  
+      "FLOPS<br>"+
+      (parseInt(f_width1)*parseInt(f_height1)*parseInt(f_count)*parseInt(f_count1)+
+      parseInt(f_count1) +
+ 
+      Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+     *Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) )/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+     *parseInt(f_count1)*parseInt(outputNumber) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1))*4+
+      "Memory Usage(byte)"
+);
+}
+else if(o[0]==0&&o[1]==1){
+  $('#count span:first').html(
+    (parseInt(f_width)*parseInt(f_height)*parseInt(depths)*parseInt(f_count) +
+     parseInt(f_count) +
+
+     Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+    *Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+    *parseInt(f_count1)*parseInt(outputNumber) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1)) +
+    " parameters <br>" +  
+    (((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) )/parseInt(s_height)+1) *
+    Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1)
+    *parseInt(f_count)) *parseInt(outputNumber) +parseInt(outputNumber))*parseInt(f_width)*parseInt(f_height)
+    + ((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+    *Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+    *parseInt(f_count1)) *parseInt(outputNumber)+(parseInt(outputNumber)*parseInt(outputNumber1)) +parseInt(outputNumber) +parseInt(outputNumber1)))+
+  
+      "FLOPS<br>"+
+      (parseInt(f_width)*parseInt(f_height)*parseInt(depths)*parseInt(f_count) +
+      parseInt(f_count) +
+
+ ((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) )/parseInt(s_height)+1) *
+    Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1)
+    *parseInt(f_count)) *parseInt(outputNumber) +parseInt(outputNumber))*parseInt(f_width)*parseInt(f_height)+
+
+      Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+     *Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) )/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+     *parseInt(f_count1)*parseInt(outputNumber) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1))*4+
+      "Memory Usage(byte)"
+);
+}
+else{
+  $('#count span:first').html(
+     (parseInt(f_count)+parseInt(f_count1) +
+
+     Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+    *Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+    *parseInt(f_count1)*parseInt(outputNumber) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1)) +
+    " parameters <br>" +  
+    ((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+    *Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+    *parseInt(f_count1)) *parseInt(outputNumber)+(parseInt(outputNumber)*parseInt(outputNumber1)) +parseInt(outputNumber) +parseInt(outputNumber1))+
+  
+      "FLOPS<br>"+
+      (Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+     *Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) )/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+     *parseInt(f_count1)*parseInt(outputNumber) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1))*4+
+      "Memory Usage(byte)"
+);
+}
+}
 
 
 function createBoxes_2() {
@@ -1065,7 +1177,7 @@ var buttons = document.querySelectorAll('.hidden');
 for (var i = 0; i < buttons.length; i++) {
 buttons[i].classList.remove('hidden');
 };
-
+if(o[0]==0&&o[1]==0&&o[2]==0){
 $('#count span:first').html(
   parseInt(f_width)*parseInt(f_height)*parseInt(depths)*parseInt(f_count) + parseInt(f_width1)*parseInt(f_height1)*parseInt(f_count)*parseInt(f_count1)+
   parseInt(f_width2)*parseInt(f_height2)*parseInt(f_count1)*parseInt(f_count2)+ parseInt(f_count)+parseInt(f_count1) +parseInt(f_count2) +
@@ -1078,7 +1190,11 @@ $('#count span:first').html(
 
   
   " parameters <br>" +  
-  ((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+  (((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) )/parseInt(s_height)+1) *
+  Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1)
+  *parseInt(f_count)) *parseInt(outputNumber) +parseInt(outputNumber))*parseInt(f_width)*parseInt(f_height)+
+
+    (Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
   *Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
   *parseInt(f_count1)*parseInt(outputNumber) +parseInt(outputNumber))*parseInt(f_width1)*parseInt(f_height1) +
 
@@ -1097,6 +1213,10 @@ $('#count span:first').html(
 (parseInt(f_width)*parseInt(f_height)*parseInt(depths)*parseInt(f_count) + parseInt(f_width1)*parseInt(f_height1)*parseInt(f_count)*parseInt(f_count1)+
 parseInt(f_width2)*parseInt(f_height2)*parseInt(f_count1)*parseInt(f_count2)+ parseInt(f_count)+parseInt(f_count1) +parseInt(f_count2) +
 
+((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) )/parseInt(s_height)+1) *
+    Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1)
+    *parseInt(f_count)) *parseInt(outputNumber) +parseInt(outputNumber))*parseInt(f_width)*parseInt(f_height)+
+
  (Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
 -parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
 *Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
@@ -1105,6 +1225,257 @@ parseInt(f_width2)*parseInt(f_height2)*parseInt(f_count1)*parseInt(f_count2)+ pa
     "Memory Usage(byte)"
 );
 
+}
+else if (o[0]==0&&o[1]==0&&o[2]==1){
+  $('#count span:first').html(
+    parseInt(f_width)*parseInt(f_height)*parseInt(depths)*parseInt(f_count) + parseInt(f_width1)*parseInt(f_height1)*parseInt(f_count)*parseInt(f_count1)+ parseInt(f_count)+parseInt(f_count1) +
+  
+     (Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+  -parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+  *Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+  -parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+  *parseInt(f_count2)) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1) +
+  
+    
+    " parameters <br>" +  
+    (((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) )/parseInt(s_height)+1) *
+    Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1)
+    *parseInt(f_count)) *parseInt(outputNumber) +parseInt(outputNumber))*parseInt(f_width)*parseInt(f_height)+
+
+    (Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+    *Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+    *parseInt(f_count1)*parseInt(outputNumber) +parseInt(outputNumber))*parseInt(f_width1)*parseInt(f_height1) +
+  
+  + (Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+  -parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+  *Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+  -parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+  *parseInt(f_count2)) *parseInt(outputNumber)+(parseInt(outputNumber)*parseInt(outputNumber1)) +parseInt(outputNumber) +parseInt(outputNumber1))+
+      "FLOPS<br>"+
+  (parseInt(f_width)*parseInt(f_height)*parseInt(depths)*parseInt(f_count) + parseInt(f_width1)*parseInt(f_height1)*parseInt(f_count)*parseInt(f_count1)+
+   parseInt(f_count)+parseInt(f_count1)  +
+  
+   (Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+  -parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+  *Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+  -parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+  *parseInt(f_count2)) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1))*4+
+      "Memory Usage(byte)"
+  );
+}
+else if(o[0]==0&&o[1]==1&&o[2]==0) {
+  $('#count span:first').html(
+    parseInt(f_width)*parseInt(f_height)*parseInt(depths)*parseInt(f_count) +
+    parseInt(f_width2)*parseInt(f_height2)*parseInt(f_count1)*parseInt(f_count2)+ parseInt(f_count)+parseInt(f_count1) +parseInt(f_count2) +
+  
+     (Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+  -parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+  *Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+  -parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+  *parseInt(f_count2)) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1) +
+  
+    
+    " parameters <br>" +  
+    (((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) )/parseInt(s_height)+1) *
+    Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1)
+    *parseInt(f_count)) *parseInt(outputNumber) +parseInt(outputNumber))*parseInt(f_width)*parseInt(f_height)+
+  
+    (Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+  -parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+  *Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+  -parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+  *parseInt(f_count2))*parseInt(f_width2)*parseInt(f_height2) +
+  
+  + (Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+  -parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+  *Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+  -parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+  *parseInt(f_count2)) *parseInt(outputNumber)+(parseInt(outputNumber)*parseInt(outputNumber1)) +parseInt(outputNumber) +parseInt(outputNumber1))+
+      "FLOPS<br>"+
+  (parseInt(f_width)*parseInt(f_height)*parseInt(depths)*parseInt(f_count) +
+  parseInt(f_width2)*parseInt(f_height2)*parseInt(f_count1)*parseInt(f_count2)+ parseInt(f_count)+parseInt(f_count2) +
+  
+  ((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) )/parseInt(s_height)+1) *
+    Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1)
+    *parseInt(f_count)) *parseInt(outputNumber) +parseInt(outputNumber))*parseInt(f_width)*parseInt(f_height)+
+
+   (Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+  -parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+  *Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+  -parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+  *parseInt(f_count2)) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1))*4+
+      "Memory Usage(byte)"
+  );
+}
+else if(o[0]==0&&o[1]==1&&o[2]==1) {
+  $('#count span:first').html(
+    parseInt(f_width)*parseInt(f_height)*parseInt(depths)*parseInt(f_count) + parseInt(f_count) +
+  
+     (Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+  -parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+  *Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+  -parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+  *parseInt(f_count2)) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1) +
+  
+    
+    " parameters <br>" +  
+    (((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) )/parseInt(s_height)+1) *
+    Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1)
+    *parseInt(f_count)) *parseInt(outputNumber) +parseInt(outputNumber))*parseInt(f_width)*parseInt(f_height)+
+    
+    (Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+  -parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+  *Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+  -parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+  *parseInt(f_count2)) *parseInt(outputNumber)+(parseInt(outputNumber)*parseInt(outputNumber1)) +parseInt(outputNumber) +parseInt(outputNumber1))+
+      "FLOPS<br>"+
+  (parseInt(f_width)*parseInt(f_height)*parseInt(depths)*parseInt(f_count)+ parseInt(f_count)+
+  
+  ((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height) )/parseInt(s_height)+1) *
+    Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1)
+    *parseInt(f_count)) *parseInt(outputNumber) +parseInt(outputNumber))*parseInt(f_width)*parseInt(f_height)+
+
+   (Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+  -parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+  *Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+  -parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+  *parseInt(f_count2)) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1))*4+
+      "Memory Usage(byte)"
+  );
+}
+else if(o[0]==1&&o[1]==0&&o[2]==0) {
+  $('#count span:first').html(
+     parseInt(f_width1)*parseInt(f_height1)*parseInt(f_count)*parseInt(f_count1)+
+    parseInt(f_width2)*parseInt(f_height2)*parseInt(f_count1)*parseInt(f_count2)+ parseInt(f_count1) +parseInt(f_count2) +
+  
+     (Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+  -parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+  *Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+  -parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+  *parseInt(f_count2)) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1) +
+  
+    
+    " parameters <br>" +  
+    ((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+    *Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+    *parseInt(f_count1)*parseInt(outputNumber) +parseInt(outputNumber))*parseInt(f_width1)*parseInt(f_height1) +
+  
+    (Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+  -parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+  *Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+  -parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+  *parseInt(f_count2))*parseInt(f_width2)*parseInt(f_height2) +
+  
+  + (Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+  -parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+  *Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+  -parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+  *parseInt(f_count2)) *parseInt(outputNumber)+(parseInt(outputNumber)*parseInt(outputNumber1)) +parseInt(outputNumber) +parseInt(outputNumber1))+
+      "FLOPS<br>"+
+  ( parseInt(f_width1)*parseInt(f_height1)*parseInt(f_count)*parseInt(f_count1)+
+  parseInt(f_width2)*parseInt(f_height2)*parseInt(f_count1)*parseInt(f_count2)+ parseInt(f_count1) +parseInt(f_count2) +
+  
+   (Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+  -parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+  *Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+  -parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+  *parseInt(f_count2)) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1))*4+
+      "Memory Usage(byte)"
+  );
+}
+else if(o[0]==1&&o[1]==0&&o[2]==1) {
+  $('#count span:first').html(
+    parseInt(f_width1)*parseInt(f_height1)*parseInt(f_count)*parseInt(f_count1)+
+   parseInt(f_width2)*parseInt(f_height2)*parseInt(f_count1)*parseInt(f_count2)+ parseInt(f_count1)+
+ 
+    (Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+ -parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+ *Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+ -parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+ *parseInt(f_count2)) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1) +
+ 
+   
+   " parameters <br>" +  
+   ((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+   *Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+   *parseInt(f_count1)*parseInt(outputNumber) +parseInt(outputNumber))*parseInt(f_width1)*parseInt(f_height1) +
+ 
+ + (Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+ -parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+ *Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+ -parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+ *parseInt(f_count2)) *parseInt(outputNumber)+(parseInt(outputNumber)*parseInt(outputNumber1)) +parseInt(outputNumber) +parseInt(outputNumber1))+
+     "FLOPS<br>"+
+ ( parseInt(f_width1)*parseInt(f_height1)*parseInt(f_count)*parseInt(f_count1)+parseInt(f_count1)  +
+ 
+  (Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+ -parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+ *Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+ -parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+ *parseInt(f_count2)) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1))*4+
+     "Memory Usage(byte)"
+ );
+}
+else if(o[0]==1&&o[1]==1&&o[2]==0) {
+  $('#count span:first').html(
+    
+   parseInt(f_width2)*parseInt(f_height2)*parseInt(f_count1)*parseInt(f_count2)+parseInt(f_count2) +
+ 
+    (Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+ -parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+ *Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+ -parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+ *parseInt(f_count2)) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1) +
+ 
+   
+   " parameters <br>" +  
+   ((Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+ -parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+ *Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+ -parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+ *parseInt(f_count2))*parseInt(f_width2)*parseInt(f_height2) +
+ 
+ + (Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+ -parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+ *Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+ -parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+ *parseInt(f_count2)) *parseInt(outputNumber)+(parseInt(outputNumber)*parseInt(outputNumber1)) +parseInt(outputNumber) +parseInt(outputNumber1))+
+     "FLOPS<br>"+
+ (parseInt(f_width2)*parseInt(f_height2)*parseInt(f_count1)*parseInt(f_count2) +parseInt(f_count2) +
+ 
+  (Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+ -parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+ *Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+ -parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+ *parseInt(f_count2)) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1))*4+
+     "Memory Usage(byte)"
+ );
+}
+else {
+  $('#count span:first').html(
+ 
+    ((Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+ -parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+ *Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+ -parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+ *parseInt(f_count2)) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1)) +
+ 
+   
+   " parameters <br>" +  
+   ((Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+ -parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+ *Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+ -parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+ *parseInt(f_count2)) *parseInt(outputNumber)+(parseInt(outputNumber)*parseInt(outputNumber1)) +parseInt(outputNumber) +parseInt(outputNumber1))+
+     "FLOPS<br>"+
+ ((Math.floor((Math.floor((Math.floor((parseInt(columns)+2*parseInt(p_width)-parseInt(f_width))/parseInt(s_width)+1) -parseInt(f_width1)+2*parseInt(p_width1)+1)/parseInt(s_width1)+1)
+ -parseInt(f_width2)+2*parseInt(p_width2) +1)/parseInt(s_width2)+1)
+ *Math.floor((Math.floor((Math.floor((parseInt(rows)+2*parseInt(p_height)-parseInt(f_height))/parseInt(s_height)+1)-parseInt(f_height1) +2*parseInt(p_height1)+1)/parseInt(s_height1)+1)
+ -parseInt(f_height2)+2*parseInt(p_height2)+1)/parseInt(s_height2)+1)
+ *parseInt(f_count2)) +parseInt(outputNumber) +parseInt(outputNumber)*parseInt(outputNumber1)+parseInt(outputNumber1))*4+
+     "Memory Usage(byte)"
+ );
+}
 }
 
 
@@ -1155,9 +1526,13 @@ return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
 }
 
 var e=0;
+var index = 0;
+var o=[];
+o[0]=0;
+o[1]=0;
+o[2]=0;
 $(document).ready(function() {
-  var index = 0;
-  
+
   $("#architecture").on("click", ".btn-add", function() {
     var inputGroup = null;
     if(e<3){
@@ -1178,6 +1553,40 @@ $(document).ready(function() {
     </span>
     `;
     $("#architecture").append(inputGroup);
+    index++;
+    }
+    else{
+      alert('필터는 최대 3개까지 추가할 수 있습니다.');
+      create_box_check();
+    }
+    e++;
+  });
+});
+
+$(document).ready(function() {
+  
+  $("#architecture").on("click", ".btn-add1", function() {
+    var inputGroup = null;
+    
+    if(e<3){
+    inputGroup = `
+    <div class="row entry">
+    <span class="input-group mb-2 mr-sm-2 col-4">
+        pooling<br>
+        rows : <input type="number" id="FilterNumber${index}_0" placeholder="Enter a number" ></input>
+        columns : <input type="number" id="FilterNumber${index}_1" placeholder="Enter a number" ></input>
+        count : <input type="number" id="FilterNumber${index}_2" placeholder="Enter a number" ></input>
+        Padding<br>
+        행 : <input type="number" id="p_Number${index}_0" placeholder="Enter a number" value="1" readonly></input>
+        열 : <input type="number" id="p_Number${index}_1" placeholder="Enter a number" value="1" readonly></input>
+        Stride<br>
+        행 : <input type="number" id="s_Number${index}_0" placeholder="Enter a number"></input>
+        열 : <input type="number" id="s_Number${index}_1" placeholder="Enter a number"></input>
+        <hr>
+    </span>
+    `;
+    $("#architecture").append(inputGroup);
+    o[index]++;
     index++;
     }
     else{
